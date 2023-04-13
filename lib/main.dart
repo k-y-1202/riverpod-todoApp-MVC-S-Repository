@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/firebase_options.dart';
@@ -20,18 +21,19 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.read(goRouterProvider);
     return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false, // debug用のバナーを非表示
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routerConfig: AppRouter.router,
+      routerConfig: router,
     );
   }
 }
