@@ -5,6 +5,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/team_todo_list_screen.dart';
 
 part 'app_router.g.dart';
 
@@ -42,7 +43,7 @@ GoRouter goRouter(GoRouterRef ref) {
       GoRoute(
         path: AppPage.todos.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
+          child: TeamTodoListScreen(),
         ),
       ),
       // todo追加画面
