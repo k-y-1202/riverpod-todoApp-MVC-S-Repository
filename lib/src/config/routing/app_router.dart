@@ -1,24 +1,41 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/main.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_refresh_stream.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
 
-class AppRouter {
-  static final GoRouter router = GoRouter(
-    debugLogDiagnostics: true,
+part 'app_router.g.dart';
+
+@riverpod
+GoRouter goRouter(GoRouterRef ref) {
+  final authRepository = ref.watch(authRepositoryProvider);
+  return GoRouter(
     initialLocation: AppPage.login.toPath,
+    debugLogDiagnostics: true, // デバッグ時にログを出力する
+    // ログイン状態に応じて画面遷移先を変更する
+    redirect: (context, state) {
+      final isLoggedIn = authRepository.currentUser != null;
+      if (isLoggedIn) {
+        if (state.subloc.startsWith(AppPage.login.toPath)) {
+          return AppPage.todos.toPath;
+        }
+      } else {
+        return AppPage.login.toPath;
+      }
+      return null;
+    },
+    // ログイン状態の変更を検知する
+    refreshListenable: GoRouterRefreshStream(
+      authRepository.authStateChanges(),
+    ),
     routes: [
       // ログイン画面
       GoRoute(
         path: AppPage.login.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
-        ),
-      ),
-      // アカウント作成画面
-      GoRoute(
-        path: AppPage.signUp.toPath,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
+          child: CustomSignInScreen(),
         ),
       ),
       // todo一覧画面
