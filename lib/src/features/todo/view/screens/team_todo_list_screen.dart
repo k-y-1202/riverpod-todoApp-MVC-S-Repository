@@ -8,47 +8,20 @@ class TeamTodoListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(teamTodoListControllerProvider);
+    final provider = ref.watch(teamTodoListControllerProvider.notifier);
     return Scaffold(
-      body: provider.when(
-        // データが取得できたとき
-        data: (state) {
-          return Column(
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  await ref
-                      .read(teamTodoListControllerProvider.notifier)
-                      .getTodoList();
-                },
-                child: Text('hoge'),
-              ),
-              Expanded(child: TodoListBuilder(todoList: state.todoList)),
-            ],
-          );
-        },
-        // データを取得中のとき
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-        // データの取得に失敗したとき
-        error: (error, stack) {
-          print(error);
-          return const Center(
-            child: Text("エラーが発生しました"),
-          );
-        },
+      appBar: AppBar(
+        title: const Text('みんなのタスク'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: TodoListBuilder(
+              stream: provider.teamTodoList(),
+            ),
+          ),
+        ],
       ),
     );
-    // return Scaffold(
-    //   appBar: AppBar(),
-    //   body: provider.isLoading
-    //       ? const Center(
-    //           child: CircularProgressIndicator(),
-    //         )
-    //       : TodoListBuilder(todoList: ),
-    // );
   }
 }
