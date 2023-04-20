@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TeamTodoListState {
-  List<Todo> get todoList => throw _privateConstructorUsedError; // todoリスト
-  bool get isLoading => throw _privateConstructorUsedError;
+  List<Todo> get todoList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TeamTodoListStateCopyWith<TeamTodoListState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $TeamTodoListStateCopyWith<$Res> {
           TeamTodoListState value, $Res Function(TeamTodoListState) then) =
       _$TeamTodoListStateCopyWithImpl<$Res, TeamTodoListState>;
   @useResult
-  $Res call({List<Todo> todoList, bool isLoading});
+  $Res call({List<Todo> todoList});
 }
 
 /// @nodoc
@@ -47,17 +46,12 @@ class _$TeamTodoListStateCopyWithImpl<$Res, $Val extends TeamTodoListState>
   @override
   $Res call({
     Object? todoList = null,
-    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       todoList: null == todoList
           ? _value.todoList
           : todoList // ignore: cast_nullable_to_non_nullable
               as List<Todo>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -70,7 +64,7 @@ abstract class _$$_TeamTodoListStateCopyWith<$Res>
       __$$_TeamTodoListStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Todo> todoList, bool isLoading});
+  $Res call({List<Todo> todoList});
 }
 
 /// @nodoc
@@ -85,17 +79,12 @@ class __$$_TeamTodoListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? todoList = null,
-    Object? isLoading = null,
   }) {
     return _then(_$_TeamTodoListState(
       todoList: null == todoList
           ? _value._todoList
           : todoList // ignore: cast_nullable_to_non_nullable
               as List<Todo>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -103,11 +92,7 @@ class __$$_TeamTodoListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TeamTodoListState implements _TeamTodoListState {
-  const _$_TeamTodoListState(
-      {final List<Todo> todoList = const [
-        Todo(todoId: "todoId", userId: "userId", title: "title", isDone: false)
-      ],
-      this.isLoading = true})
+  const _$_TeamTodoListState({final List<Todo> todoList = const []})
       : _todoList = todoList;
 
   final List<Todo> _todoList;
@@ -119,14 +104,9 @@ class _$_TeamTodoListState implements _TeamTodoListState {
     return EqualUnmodifiableListView(_todoList);
   }
 
-// todoリスト
-  @override
-  @JsonKey()
-  final bool isLoading;
-
   @override
   String toString() {
-    return 'TeamTodoListState(todoList: $todoList, isLoading: $isLoading)';
+    return 'TeamTodoListState(todoList: $todoList)';
   }
 
   @override
@@ -134,14 +114,12 @@ class _$_TeamTodoListState implements _TeamTodoListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TeamTodoListState &&
-            const DeepCollectionEquality().equals(other._todoList, _todoList) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+            const DeepCollectionEquality().equals(other._todoList, _todoList));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_todoList), isLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todoList));
 
   @JsonKey(ignore: true)
   @override
@@ -152,13 +130,11 @@ class _$_TeamTodoListState implements _TeamTodoListState {
 }
 
 abstract class _TeamTodoListState implements TeamTodoListState {
-  const factory _TeamTodoListState(
-      {final List<Todo> todoList, final bool isLoading}) = _$_TeamTodoListState;
+  const factory _TeamTodoListState({final List<Todo> todoList}) =
+      _$_TeamTodoListState;
 
   @override
   List<Todo> get todoList;
-  @override // todoリスト
-  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$_TeamTodoListStateCopyWith<_$_TeamTodoListState> get copyWith =>

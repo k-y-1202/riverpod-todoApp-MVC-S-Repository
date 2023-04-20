@@ -6,10 +6,6 @@ part 'team_todo_list_state.freezed.dart';
 @freezed
 class TeamTodoListState with _$TeamTodoListState {
   const factory TeamTodoListState({
-    @Default([
-      Todo(todoId: "todoId", userId: "userId", title: "title", isDone: false)
-    ])
-        List<Todo> todoList, // todoリスト
-    @Default(true) bool isLoading, // 初期ローディング中かどうか
+    @Default([]) List<Todo> todoList, // todoリスト
   }) = _TeamTodoListState;
 }
