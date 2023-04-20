@@ -10,6 +10,7 @@ class Todo with _$Todo {
     required String userId, // ユーザーID
     required String title, // タイトル
     required bool isDone, // 完了しているかどうか
+    required String createdAt, // 作成日時
   }) = _Todo;
 
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
