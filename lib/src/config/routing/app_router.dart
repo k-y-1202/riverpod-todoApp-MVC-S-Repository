@@ -5,7 +5,9 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/team_todo_list_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/my_todo_list_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/team_todo_list_screen.dart';
 
 part 'app_router.g.dart';
 
@@ -18,11 +20,14 @@ GoRouter goRouter(GoRouterRef ref) {
     // ログイン状態に応じて画面遷移先を変更する
     redirect: (context, state) {
       final isLoggedIn = authRepository.currentUser != null;
+      // ログインしている場合は、ログイン画面に遷移しない
       if (isLoggedIn) {
         if (state.subloc.startsWith(AppPage.login.toPath)) {
-          return AppPage.todos.toPath;
+          return AppPage.teamTodoList.toPath;
         }
-      } else {
+      }
+      // ログインしていない場合は、ログイン画面に遷移する
+      else {
         return AppPage.login.toPath;
       }
       return null;
@@ -39,33 +44,52 @@ GoRouter goRouter(GoRouterRef ref) {
           child: CustomSignInScreen(),
         ),
       ),
-      // todo一覧画面
-      GoRoute(
-        path: AppPage.todos.toPath,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: TeamTodoListScreen(),
-        ),
-      ),
-      // todo追加画面
-      GoRoute(
-        path: AppPage.addTodo.toPath,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
-        ),
-      ),
-      // プロフィール画面
-      GoRoute(
-        path: AppPage.profile.toPath,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
-        ),
-      ),
-      // プロフィール編集画面
-      GoRoute(
-        path: AppPage.editProfile.toPath,
-        pageBuilder: (context, state) => const NoTransitionPage(
-          child: TestScreen(),
-        ),
+      ShellRoute(
+        pageBuilder: (context, state, child) {
+          return NoTransitionPage(
+            child: BottomNavigation(
+              path: state.location,
+              child: child,
+            ),
+          );
+        },
+        routes: [
+          // チームのtodo一覧画面
+          GoRoute(
+            path: AppPage.teamTodoList.toPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TeamTodoListScreen(),
+            ),
+          ),
+          // 自分のtodo一覧画面
+          GoRoute(
+            path: AppPage.myTodoList.toPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: MyTodoListScreen(),
+            ),
+          ),
+          // todo追加画面
+          GoRoute(
+            path: AppPage.addTodo.toPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TestScreen(),
+            ),
+          ),
+          // プロフィール画面
+          GoRoute(
+            path: AppPage.profile.toPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TestScreen(),
+            ),
+          ),
+          // プロフィール編集画面
+          GoRoute(
+            path: AppPage.editProfile.toPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: TestScreen(),
+            ),
+          ),
+        ],
       ),
     ],
   );
