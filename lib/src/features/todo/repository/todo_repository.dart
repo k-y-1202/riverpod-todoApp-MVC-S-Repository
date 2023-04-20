@@ -47,13 +47,19 @@ class TodoRepository {
   }
 
   // read
-  Stream<List<Todo>> getTodos({required String userId}) {
-    return queryTodo(userId).where(userId).snapshots().map(
+  Stream<List<Todo>> getMyTodoList({required String userId}) {
+    return queryTodo().where(userId, isEqualTo: Keys.userId).snapshots().map(
           (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
         );
   }
 
-  Query<Todo> queryTodo(String userId) {
+  Stream<List<Todo>> getTeamTodoList({required String teamId}) {
+    return queryTodo().where(teamId, isEqualTo: Keys.teamId).snapshots().map(
+          (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
+        );
+  }
+
+  Query<Todo> queryTodo() {
     Query<Todo> query = _db.withConverter(
       fromFirestore: (snapshot, options) => Todo.fromJson(snapshot.data()!),
       toFirestore: (value, options) => value.toJson(),
