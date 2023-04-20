@@ -6,21 +6,31 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/
 class TodoListBuilder extends ConsumerWidget {
   const TodoListBuilder({
     super.key,
-    required this.todoList,
+    required this.stream,
   });
 
-  final List<Todo> todoList;
+  final Stream<List<Todo>> stream;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authRepository = ref.watch(authRepositoryProvider);
     final currentUserId = authRepository.currentUser?.uid;
-    return ListView.separated(
-      itemCount: todoList.length,
-      itemBuilder: (context, index) =>
-          _todoTile(todoList[index], currentUserId),
-      separatorBuilder: (context, index) => _divider(),
-    );
+    return StreamBuilder(
+        stream: stream,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          final todoList = snapshot.data as List<Todo>;
+          return ListView.separated(
+            itemCount: todoList.length,
+            itemBuilder: (context, index) =>
+                _todoTile(todoList[index], currentUserId),
+            separatorBuilder: (context, index) => _divider(),
+          );
+        });
   }
 
   _todoTile(Todo todo, String? currentUserId) {
