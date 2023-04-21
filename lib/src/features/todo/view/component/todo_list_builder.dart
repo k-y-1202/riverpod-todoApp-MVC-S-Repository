@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/colors.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/component/todo_tile.dart';
 
 class TodoListBuilder extends ConsumerWidget {
   const TodoListBuilder({
@@ -13,7 +15,7 @@ class TodoListBuilder extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authRepository = ref.watch(authRepositoryProvider);
+    final authRepository = ref.read(authRepositoryProvider);
     final currentUserId = authRepository.currentUser?.uid;
     return StreamBuilder(
         stream: stream,
@@ -25,38 +27,22 @@ class TodoListBuilder extends ConsumerWidget {
           }
           final todoList = snapshot.data as List<Todo>;
           return ListView.separated(
+            padding: const EdgeInsets.all(18),
             itemCount: todoList.length,
-            itemBuilder: (context, index) =>
-                _todoTile(todoList[index], currentUserId),
+            itemBuilder: (context, index) => TodoTile(
+              currentUserId: currentUserId,
+              todo: todoList[index],
+            ),
             separatorBuilder: (context, index) => _divider(),
           );
         });
   }
 
-  _todoTile(Todo todo, String? currentUserId) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              Text(todo.title),
-              Text(todo.userId),
-            ],
-          ),
-        ),
-        if (todo.userId == currentUserId)
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit),
-          ),
-      ],
-    );
-  }
-
   _divider() {
     return const Divider(
-      height: 1,
-      thickness: 1,
+      height: 20,
+      thickness: 4,
+      color: ColorName.black,
     );
   }
 }
