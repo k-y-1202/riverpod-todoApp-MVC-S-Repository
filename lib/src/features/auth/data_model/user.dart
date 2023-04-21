@@ -9,6 +9,7 @@ class User with _$User {
     required String userId, // ユーザーID
     required String userName, // ユーザー名
     required String email, // メールアドレス
+    required String createdAt, // 作成日時
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

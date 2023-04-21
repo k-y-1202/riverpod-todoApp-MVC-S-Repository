@@ -22,7 +22,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get userId => throw _privateConstructorUsedError; // ユーザーID
   String get userName => throw _privateConstructorUsedError; // ユーザー名
-  String get email => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError; // メールアドレス
+  String get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String userId, String userName, String email});
+  $Res call({String userId, String userName, String email, String createdAt});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? userId = null,
     Object? userName = null,
     Object? email = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -67,6 +69,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -77,7 +83,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String userName, String email});
+  $Res call({String userId, String userName, String email, String createdAt});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? userId = null,
     Object? userName = null,
     Object? email = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_User(
       userId: null == userId
@@ -106,6 +113,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -114,7 +125,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {required this.userId, required this.userName, required this.email});
+      {required this.userId,
+      required this.userName,
+      required this.email,
+      required this.createdAt});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -126,10 +140,13 @@ class _$_User implements _User {
 // ユーザー名
   @override
   final String email;
+// メールアドレス
+  @override
+  final String createdAt;
 
   @override
   String toString() {
-    return 'User(userId: $userId, userName: $userName, email: $email)';
+    return 'User(userId: $userId, userName: $userName, email: $email, createdAt: $createdAt)';
   }
 
   @override
@@ -140,12 +157,15 @@ class _$_User implements _User {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, userName, email);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, userName, email, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -165,7 +185,8 @@ abstract class _User implements User {
   const factory _User(
       {required final String userId,
       required final String userName,
-      required final String email}) = _$_User;
+      required final String email,
+      required final String createdAt}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -175,6 +196,8 @@ abstract class _User implements User {
   String get userName;
   @override // ユーザー名
   String get email;
+  @override // メールアドレス
+  String get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
