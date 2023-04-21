@@ -7,7 +7,8 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_util
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/profile_details_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_details_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_edit_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/add_todo_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/my_todo_list_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/team_todo_list_screen.dart';
@@ -89,7 +90,7 @@ GoRouter goRouter(GoRouterRef ref) {
           GoRoute(
             path: AppPage.editProfile.toPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: TestScreen(),
+              child: ProfileEditScreen(),
             ),
           ),
         ],
