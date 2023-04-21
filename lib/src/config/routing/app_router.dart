@@ -1,7 +1,5 @@
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/main.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_refresh_stream.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
