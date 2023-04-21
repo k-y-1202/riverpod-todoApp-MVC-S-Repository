@@ -31,6 +31,7 @@ class TodoRepository {
       title: title,
       createdAt: DateTime.now().toIso8601String(),
       userId: user!.uid,
+      teamId: 'teamId',
       isDone: false,
       todoId: doc.id,
     );
@@ -42,7 +43,7 @@ class TodoRepository {
     required String todoId,
     required bool isDone,
   }) async =>
-      await _db.doc(todoId).update({'isDone': isDone});
+      await _db.doc(todoId).update({Keys.isDone: isDone});
 
   // read
   // 自分だけのTodoを取得
