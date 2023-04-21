@@ -33,9 +33,9 @@ class PrimaryTextField extends StatelessWidget {
             ),
           TextField(
             controller: controller,
-            decoration: const InputDecoration(
-              hintText: 'タスク名',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              hintText: hintText,
+              border: const OutlineInputBorder(),
             ),
           ),
         ],
