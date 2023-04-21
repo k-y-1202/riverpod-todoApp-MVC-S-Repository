@@ -5,12 +5,14 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 
+// withConverter
 final todoFirestoreProvider = Provider((ref) =>
     ref.read(firestoreProvider).collection(Keys.todoCollection).withConverter(
           fromFirestore: (snapshot, options) => Todo.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
         ));
 
+// 実際に呼び出すときはこっち
 final todoRepoProvider =
     Provider<TodoRepository>((ref) => TodoRepository(ref: ref));
 
