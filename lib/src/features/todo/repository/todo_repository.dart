@@ -17,7 +17,7 @@ final todoRepoProvider =
 class TodoRepository {
   TodoRepository({required this.ref}) : _db = ref.read(todoFirestoreProvider);
   final Ref ref;
-  final CollectionReference _db;
+  final CollectionReference<Todo> _db;
 
   // create
   Future<void> addTodo({
@@ -43,18 +43,15 @@ class TodoRepository {
       await _db.doc(todoId).update({'isDone': isDone});
 
   // read
+  // 自分だけのTodoを取得
   Stream<List<Todo>> getMyTodoList({required String userId}) =>
-      queryTodo().where(userId, isEqualTo: Keys.userId).snapshots().map(
+      _db.where(userId, isEqualTo: Keys.userId).snapshots().map(
             (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
           );
 
+  // チームのTodoを取得
   Stream<List<Todo>> getTeamTodoList({required String teamId}) =>
-      queryTodo().where(teamId, isEqualTo: Keys.teamId).snapshots().map(
+      _db.where(teamId, isEqualTo: Keys.teamId).snapshots().map(
             (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
           );
-
-  Query<Todo> queryTodo() => _db.withConverter(
-        fromFirestore: (snapshot, options) => Todo.fromJson(snapshot.data()!),
-        toFirestore: (value, options) => value.toJson(),
-      );
 }
