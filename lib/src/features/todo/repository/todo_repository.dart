@@ -32,9 +32,9 @@ class TodoRepository {
       createdAt: DateTime.now().toIso8601String(),
       userId: user!.uid,
       isDone: false,
-      todoId: '',
+      todoId: doc.id,
     );
-    await doc.set(todo.copyWith(todoId: doc.id));
+    await doc.set(todo);
   }
 
   // update
