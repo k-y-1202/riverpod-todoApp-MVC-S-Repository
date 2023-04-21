@@ -7,6 +7,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_util
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_details_controller.dart';
 
 class ProfileDetailsScreen extends HookConsumerWidget {
   const ProfileDetailsScreen({super.key});
@@ -14,13 +15,13 @@ class ProfileDetailsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    final firebaseUser = ref.read(firebaseAuthProvider).currentUser;
     final user = useState<User?>(null); // HooksのStateを使ってユーザー情報を管理
 
     // ユーザー情報を取得する関数
     void getUser() async {
-      final userRepo = ref.read(userRepoProvider);
-      final result = await userRepo.getUser(userId: firebaseUser?.uid ?? "");
+      final profileDetailsController =
+          ref.read(profileDetailsControllerProvider.notifier);
+      final result = await profileDetailsController.getUser();
       user.value = result;
     }
 
