@@ -48,13 +48,13 @@ class TodoRepository {
   // read
   // 自分だけのTodoを取得
   Stream<List<Todo>> getMyTodoList({required String userId}) =>
-      _db.where(userId, isEqualTo: Keys.userId).snapshots().map(
+      _db.where(Keys.userId, isEqualTo: userId).snapshots().map(
             (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
           );
 
   // チームのTodoを取得
   Stream<List<Todo>> getTeamTodoList({required String teamId}) =>
-      _db.where(teamId, isEqualTo: Keys.teamId).snapshots().map(
+      _db.where(Keys.teamId, isEqualTo: teamId).snapshots().map(
             (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
           );
 }
