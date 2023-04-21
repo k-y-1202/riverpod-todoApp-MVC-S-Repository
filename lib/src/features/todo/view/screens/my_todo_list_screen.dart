@@ -11,7 +11,6 @@ class MyTodoListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // TODO: ここで、自分のTodoリストを取得する
     final todoListController = ref.watch(todoListControllerProvider.notifier);
 
     return Scaffold(
