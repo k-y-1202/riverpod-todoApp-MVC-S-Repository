@@ -5,6 +5,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart'
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/repository/todo_repository.dart';
 
 class TodoTile extends HookConsumerWidget {
   const TodoTile({
@@ -18,13 +19,15 @@ class TodoTile extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = useState<User?>(null);
+    final user = useState<User?>(null); // HooksのStateを使ってユーザー情報を管理
+
     void getUser() async {
       final userRepo = ref.read(userRepoProvider);
       final result = await userRepo.getUser(userId: todo.userId);
       user.value = result;
     }
 
+    // 初回build時に発火するHooksの関数
     useEffect(() {
       getUser();
       return null;
@@ -50,7 +53,21 @@ class TodoTile extends HookConsumerWidget {
         ),
         if (todo.userId == currentUserId)
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              final todoRepo = ref.read(todoRepoProvider);
+              await todoRepo
+                  .updateTodo(
+                    isDone: true,
+                    todoId: todo.todoId,
+                  )
+                  .then(
+                    (value) => ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('タスクを削除しました'),
+                      ),
+                    ),
+                  );
+            },
             icon: const Icon(Icons.delete),
           ),
       ],
