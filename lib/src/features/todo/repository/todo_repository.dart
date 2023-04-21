@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 
 final todoFirestoreProvider = Provider((ref) =>
-    FirebaseFirestore.instance.collection(Keys.todoCollection).withConverter(
+    ref.read(firestoreProvider).collection(Keys.todoCollection).withConverter(
           fromFirestore: (snapshot, options) => Todo.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
         ));
