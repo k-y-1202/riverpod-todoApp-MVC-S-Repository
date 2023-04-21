@@ -22,6 +22,7 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 mixin _$Todo {
   String get todoId => throw _privateConstructorUsedError; // todoID
   String get userId => throw _privateConstructorUsedError; // ユーザーID
+  String get teamId => throw _privateConstructorUsedError; // チームID
   String get title => throw _privateConstructorUsedError; // タイトル
   bool get isDone => throw _privateConstructorUsedError; // 完了しているかどうか
   String get createdAt => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ abstract class $TodoCopyWith<$Res> {
   $Res call(
       {String todoId,
       String userId,
+      String teamId,
       String title,
       bool isDone,
       String createdAt});
@@ -59,6 +61,7 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   $Res call({
     Object? todoId = null,
     Object? userId = null,
+    Object? teamId = null,
     Object? title = null,
     Object? isDone = null,
     Object? createdAt = null,
@@ -71,6 +74,10 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      teamId: null == teamId
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -97,6 +104,7 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   $Res call(
       {String todoId,
       String userId,
+      String teamId,
       String title,
       bool isDone,
       String createdAt});
@@ -113,6 +121,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
   $Res call({
     Object? todoId = null,
     Object? userId = null,
+    Object? teamId = null,
     Object? title = null,
     Object? isDone = null,
     Object? createdAt = null,
@@ -125,6 +134,10 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      teamId: null == teamId
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -148,6 +161,7 @@ class _$_Todo implements _Todo {
   const _$_Todo(
       {required this.todoId,
       required this.userId,
+      required this.teamId,
       required this.title,
       required this.isDone,
       required this.createdAt});
@@ -161,6 +175,9 @@ class _$_Todo implements _Todo {
   final String userId;
 // ユーザーID
   @override
+  final String teamId;
+// チームID
+  @override
   final String title;
 // タイトル
   @override
@@ -171,7 +188,7 @@ class _$_Todo implements _Todo {
 
   @override
   String toString() {
-    return 'Todo(todoId: $todoId, userId: $userId, title: $title, isDone: $isDone, createdAt: $createdAt)';
+    return 'Todo(todoId: $todoId, userId: $userId, teamId: $teamId, title: $title, isDone: $isDone, createdAt: $createdAt)';
   }
 
   @override
@@ -181,6 +198,7 @@ class _$_Todo implements _Todo {
             other is _$_Todo &&
             (identical(other.todoId, todoId) || other.todoId == todoId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.teamId, teamId) || other.teamId == teamId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.createdAt, createdAt) ||
@@ -189,8 +207,8 @@ class _$_Todo implements _Todo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, todoId, userId, title, isDone, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, todoId, userId, teamId, title, isDone, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -210,6 +228,7 @@ abstract class _Todo implements Todo {
   const factory _Todo(
       {required final String todoId,
       required final String userId,
+      required final String teamId,
       required final String title,
       required final bool isDone,
       required final String createdAt}) = _$_Todo;
@@ -221,6 +240,8 @@ abstract class _Todo implements Todo {
   @override // todoID
   String get userId;
   @override // ユーザーID
+  String get teamId;
+  @override // チームID
   String get title;
   @override // タイトル
   bool get isDone;

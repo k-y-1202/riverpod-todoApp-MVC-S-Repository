@@ -8,6 +8,7 @@ class Todo with _$Todo {
   const factory Todo({
     required String todoId, // todoID
     required String userId, // ユーザーID
+    required String teamId, // チームID
     required String title, // タイトル
     required bool isDone, // 完了しているかどうか
     required String createdAt, // 作成日時
