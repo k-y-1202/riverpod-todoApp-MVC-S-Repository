@@ -40,9 +40,21 @@ class ProfileDetailsScreen extends HookConsumerWidget {
           horizontal: deviceWidth * 0.1,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  ref.read(firebaseAuthProvider).signOut().then((_) {
+                    context.go(AppPage.login.toPath);
+                  });
+                },
+                child: const Text('ログアウト'),
+              ),
+            ),
+            const Spacer(),
             Text('name : ${user.value?.userName ?? ''}'),
             const SizedBox(height: 24),
             Text('email : ${user.value?.email ?? ''}'),
@@ -52,6 +64,7 @@ class ProfileDetailsScreen extends HookConsumerWidget {
               text: 'プロフィール編集',
               onPressed: () => context.go(AppPage.editProfile.toPath),
             ),
+            const Spacer(),
           ],
         ),
       ),
