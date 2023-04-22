@@ -17,6 +17,24 @@ class BottomNavigation extends HookWidget {
   Widget build(BuildContext context) {
     final currentIndex = useState<int>(0); // HooksのStateを使ってページ遷移を管理
 
+    // 画面遷移時にcurrentIndexを更新
+    useEffect(() {
+      if (path == AppPage.teamTodoList.toPath) {
+        currentIndex.value = 0;
+        return null;
+      }
+      if (path == AppPage.myTodoList.toPath || path == AppPage.addTodo.toPath) {
+        currentIndex.value = 1;
+        return null;
+      }
+      if (path == AppPage.profile.toPath ||
+          path == AppPage.editProfile.toPath) {
+        currentIndex.value = 2;
+        return null;
+      }
+      return null;
+    });
+
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomNavigationBar(
@@ -39,15 +57,12 @@ class BottomNavigation extends HookWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              currentIndex.value = 0;
               context.go(AppPage.teamTodoList.toPath);
               break;
             case 1:
-              currentIndex.value = 1;
               context.go(AppPage.myTodoList.toPath);
               break;
             case 2:
-              currentIndex.value = 2;
               context.go(AppPage.profile.toPath);
               break;
           }
