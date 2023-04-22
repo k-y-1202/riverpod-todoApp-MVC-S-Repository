@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/controller/todo_list_controller.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/component/todo_list_builder.dart';
 
 class MyTodoListScreen extends ConsumerWidget {

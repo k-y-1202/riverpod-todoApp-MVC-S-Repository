@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/model/todo.dart';
 
 // withConverter
 final todoFirestoreProvider = Provider((ref) =>

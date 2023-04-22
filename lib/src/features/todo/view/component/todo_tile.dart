@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/repository/todo_repository.dart';
 
 class TodoTile extends HookConsumerWidget {
