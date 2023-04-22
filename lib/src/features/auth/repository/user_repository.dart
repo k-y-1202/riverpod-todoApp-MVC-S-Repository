@@ -25,13 +25,14 @@ class UserRepository {
 
   // create
   Future<void> addUser({
+    required String userId,
     required String userName,
     required String email,
   }) async {
-    final doc = _db.doc();
+    final doc = _db.doc(userId);
     final user = User(
       userName: userName,
-      userId: doc.id,
+      userId: userId,
       email: email,
       createdAt: DateTime.now().toIso8601String(),
     );
@@ -48,4 +49,9 @@ class UserRepository {
   // read
   Future<User?> getUser({required String userId}) async =>
       await _db.doc(userId).get().then((doc) => doc.data());
+
+  Future<bool> searchUser({required String userId}) async {
+    final user = await _db.where(Keys.userId, isEqualTo: userId).get();
+    return user.docs.isNotEmpty;
+  }
 }
