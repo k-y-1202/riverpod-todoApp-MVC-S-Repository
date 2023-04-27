@@ -21,10 +21,7 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for ios - '
@@ -58,6 +55,14 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1048916604079',
     projectId: 'riverpod-todo-app-mvcsr',
     authDomain: 'riverpod-todo-app-mvcsr.firebaseapp.com',
+    storageBucket: 'riverpod-todo-app-mvcsr.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAaUg5PV8J8sl04zeRT1AG89kMvTFwP74M',
+    appId: '1:1048916604079:android:0ac64532aae116cf0a105a',
+    messagingSenderId: '1048916604079',
+    projectId: 'riverpod-todo-app-mvcsr',
     storageBucket: 'riverpod-todo-app-mvcsr.appspot.com',
   );
 }

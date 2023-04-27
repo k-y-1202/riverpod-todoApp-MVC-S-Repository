@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1048916604079",
+    "project_id": "riverpod-todo-app-mvcsr",
+    "storage_bucket": "riverpod-todo-app-mvcsr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048916604079:android:0ac64532aae116cf0a105a",
+        "android_client_info": {
+          "package_name": "com.example.riverpod_todo_app_mvc_s_repository"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048916604079-tmkuudon6j18eief4826c5bgaa9kn6m5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaUg5PV8J8sl04zeRT1AG89kMvTFwP74M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048916604079-tmkuudon6j18eief4826c5bgaa9kn6m5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
