@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_refresh_stream.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/sign_in_up_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_details_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_edit_screen.dart';
@@ -15,7 +15,7 @@ part 'app_router.g.dart';
 
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
-  final authRepository = ref.watch(authRepositoryProvider);
+  final authRepository = ref.watch(firebaseAuthProvider);
   return GoRouter(
     initialLocation: AppPage.login.toPath,
     debugLogDiagnostics: true, // デバッグ時にログを出力する
@@ -43,7 +43,7 @@ GoRouter goRouter(GoRouterRef ref) {
       GoRoute(
         path: AppPage.login.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: CustomSignInScreen(),
+          child: SignInUpScreen(isRegister: false),
         ),
       ),
       ShellRoute(
