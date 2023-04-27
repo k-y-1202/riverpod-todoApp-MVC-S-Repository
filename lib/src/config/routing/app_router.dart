@@ -5,7 +5,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/sign_in_up_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_details_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_edit_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/add_todo_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/my_todo_list_screen.dart';
