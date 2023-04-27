@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/model/user.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 
 final userFirestoreProvider = Provider<CollectionReference<User>>(
   (ref) => ref

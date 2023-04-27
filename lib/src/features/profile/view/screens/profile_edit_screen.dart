@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_text_field.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/model/user.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_edit_controller.dart';
 
 class ProfileEditScreen extends HookConsumerWidget {
