@@ -8,6 +8,7 @@ class User with _$User {
   const factory User({
     required String userId, // ユーザーID
     required String userName, // ユーザー名
+    required String userIcon, // ユーザーアイコン
     required String email, // メールアドレス
     required String createdAt, // 作成日時
   }) = _User;

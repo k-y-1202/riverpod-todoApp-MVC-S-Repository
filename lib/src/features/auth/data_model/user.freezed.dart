@@ -22,6 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get userId => throw _privateConstructorUsedError; // ユーザーID
   String get userName => throw _privateConstructorUsedError; // ユーザー名
+  String get userIcon => throw _privateConstructorUsedError; // ユーザーアイコン
   String get email => throw _privateConstructorUsedError; // メールアドレス
   String get createdAt => throw _privateConstructorUsedError;
 
@@ -35,7 +36,12 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String userId, String userName, String email, String createdAt});
+  $Res call(
+      {String userId,
+      String userName,
+      String userIcon,
+      String email,
+      String createdAt});
 }
 
 /// @nodoc
@@ -53,6 +59,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? userId = null,
     Object? userName = null,
+    Object? userIcon = null,
     Object? email = null,
     Object? createdAt = null,
   }) {
@@ -64,6 +71,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userIcon: null == userIcon
+          ? _value.userIcon
+          : userIcon // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -83,7 +94,12 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String userName, String email, String createdAt});
+  $Res call(
+      {String userId,
+      String userName,
+      String userIcon,
+      String email,
+      String createdAt});
 }
 
 /// @nodoc
@@ -97,6 +113,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? userId = null,
     Object? userName = null,
+    Object? userIcon = null,
     Object? email = null,
     Object? createdAt = null,
   }) {
@@ -108,6 +125,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userIcon: null == userIcon
+          ? _value.userIcon
+          : userIcon // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -127,6 +148,7 @@ class _$_User implements _User {
   const _$_User(
       {required this.userId,
       required this.userName,
+      required this.userIcon,
       required this.email,
       required this.createdAt});
 
@@ -139,6 +161,9 @@ class _$_User implements _User {
   final String userName;
 // ユーザー名
   @override
+  final String userIcon;
+// ユーザーアイコン
+  @override
   final String email;
 // メールアドレス
   @override
@@ -146,7 +171,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, userName: $userName, email: $email, createdAt: $createdAt)';
+    return 'User(userId: $userId, userName: $userName, userIcon: $userIcon, email: $email, createdAt: $createdAt)';
   }
 
   @override
@@ -157,6 +182,8 @@ class _$_User implements _User {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.userIcon, userIcon) ||
+                other.userIcon == userIcon) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
@@ -165,7 +192,7 @@ class _$_User implements _User {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userId, userName, email, createdAt);
+      Object.hash(runtimeType, userId, userName, userIcon, email, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -185,6 +212,7 @@ abstract class _User implements User {
   const factory _User(
       {required final String userId,
       required final String userName,
+      required final String userIcon,
       required final String email,
       required final String createdAt}) = _$_User;
 
@@ -195,6 +223,8 @@ abstract class _User implements User {
   @override // ユーザーID
   String get userName;
   @override // ユーザー名
+  String get userIcon;
+  @override // ユーザーアイコン
   String get email;
   @override // メールアドレス
   String get createdAt;
