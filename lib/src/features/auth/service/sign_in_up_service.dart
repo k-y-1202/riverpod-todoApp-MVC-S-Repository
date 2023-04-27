@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 
@@ -51,6 +52,7 @@ class SignInUpService {
     return User(
       userId: firebaseUser.uid,
       userName: firebaseUser.displayName ?? "",
+      userIcon: Urls.defaultIcon,
       email: firebaseUser.email ?? "",
       createdAt: DateTime.now().toIso8601String(),
     );
