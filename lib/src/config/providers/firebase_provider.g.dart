@@ -34,4 +34,19 @@ final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
 );
 
 typedef FirebaseAuthRef = ProviderRef<FirebaseAuth>;
+String _$firebaseStorageHash() => r'ddec157566e3f96dac39d44de2cd99f9d71f9b54';
+
+/// See also [firebaseStorage].
+@ProviderFor(firebaseStorage)
+final firebaseStorageProvider = Provider<FirebaseStorage>.internal(
+  firebaseStorage,
+  name: r'firebaseStorageProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$firebaseStorageHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FirebaseStorageRef = ProviderRef<FirebaseStorage>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
