@@ -7,12 +7,12 @@ part of 'profile_edit_controller.dart';
 // **************************************************************************
 
 String _$profileEditControllerHash() =>
-    r'8c6bcd9717b1931b754b3672949a125755265919';
+    r'9bbb43651926f87f5994b7c0feb4a789fce18fb0';
 
 /// See also [ProfileEditController].
 @ProviderFor(ProfileEditController)
-final profileEditControllerProvider =
-    AutoDisposeNotifierProvider<ProfileEditController, dynamic>.internal(
+final profileEditControllerProvider = AutoDisposeAsyncNotifierProvider<
+    ProfileEditController, ProfileEditState>.internal(
   ProfileEditController.new,
   name: r'profileEditControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,5 +22,5 @@ final profileEditControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileEditController = AutoDisposeNotifier<dynamic>;
+typedef _$ProfileEditController = AutoDisposeAsyncNotifier<ProfileEditState>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
