@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/repository/todo_repository.dart';
 
@@ -15,7 +15,7 @@ class TodoListController extends _$TodoListController {
   }
 
   Stream<List<Todo>> myTodoList() {
-    final userId = ref.read(authRepositoryProvider).currentUser!.uid;
+    final userId = ref.read(firebaseAuthProvider).currentUser!.uid;
     return ref.read(todoRepoProvider).getMyTodoList(userId: userId);
   }
 }

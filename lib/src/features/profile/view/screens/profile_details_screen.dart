@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_details_controller.dart';
 
 class ProfileDetailsScreen extends HookConsumerWidget {

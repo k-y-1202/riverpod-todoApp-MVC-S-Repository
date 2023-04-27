@@ -7,7 +7,7 @@ part of 'todo_list_controller.dart';
 // **************************************************************************
 
 String _$todoListControllerHash() =>
-    r'f935fe6884a11913af4729803a27873ae1107254';
+    r'5dbe1f5284b37f21d2633de9a2588890b53a9752';
 
 /// See also [TodoListController].
 @ProviderFor(TodoListController)

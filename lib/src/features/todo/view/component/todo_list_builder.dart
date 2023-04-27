@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/colors.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/component/todo_tile.dart';
 
@@ -15,7 +15,7 @@ class TodoListBuilder extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authRepository = ref.read(authRepositoryProvider);
+    final authRepository = ref.read(firebaseAuthProvider);
     final currentUserId = authRepository.currentUser?.uid;
     return StreamBuilder(
         stream: stream,
