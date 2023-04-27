@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_text_field.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_edit_controller.dart';
 
@@ -26,6 +29,8 @@ class ProfileEditScreen extends HookConsumerWidget {
       nameController.text = result!.userName;
     }
 
+    final state = ref.watch(profileEditControllerProvider);
+
     // 初回build時に発火するHooksの関数
     useEffect(() {
       getUser();
@@ -42,6 +47,24 @@ class ProfileEditScreen extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Align(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () => ref
+                    .read(profileEditControllerProvider.notifier)
+                    .pickImage(),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: state.value?.imageFile != null
+                      ? Image.file(state.value!.imageFile!).image
+                      : CachedNetworkImageProvider(
+                          // user.value?.userIcon ?? Urls.defaultIcon,
+                          state.value?.user?.userIcon ?? Urls.defaultIcon,
+                        ),
+                ),
+              ),
+            ),
+            PaddingStyle.v32,
             PrimaryTextField(
               controller: nameController,
               title: '名前',
