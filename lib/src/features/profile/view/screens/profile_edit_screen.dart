@@ -16,7 +16,7 @@ class ProfileEditScreen extends HookConsumerWidget {
     final profileEditController =
         ref.read(profileEditControllerProvider.notifier);
     final deviceWidth = MediaQuery.of(context).size.width;
-    final nameController = TextEditingController();
+    final nameController = useTextEditingController();
     final user = useState<User?>(null);
 
     // ユーザー情報を取得する関数

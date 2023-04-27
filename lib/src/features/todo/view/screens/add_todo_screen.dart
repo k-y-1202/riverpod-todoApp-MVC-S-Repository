@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
@@ -6,12 +7,12 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/pr
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/controller/add_todo_controller.dart';
 
-class AddTodoScreen extends ConsumerWidget {
+class AddTodoScreen extends HookConsumerWidget {
   const AddTodoScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final titleController = TextEditingController();
+    final titleController = useTextEditingController();
     final deviceWidth = MediaQuery.of(context).size.width;
     final addTodoController = ref.watch(addTodoControllerProvider);
 
