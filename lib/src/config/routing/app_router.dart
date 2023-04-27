@@ -1,8 +1,11 @@
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_refresh_stream.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/controller/auth_controller.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/auth_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/custom_sign_in_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_details_screen.dart';
@@ -43,7 +46,8 @@ GoRouter goRouter(GoRouterRef ref) {
       GoRoute(
         path: AppPage.login.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
-          child: CustomSignInScreen(),
+          // child: CustomSignInScreen(),
+          child: AuthScreen(),
         ),
       ),
       ShellRoute(

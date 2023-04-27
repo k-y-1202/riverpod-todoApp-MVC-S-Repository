@@ -11,3 +11,19 @@ List<AuthProvider<AuthListener, AuthCredential>> authProvider(
     EmailAuthProvider(),
   ];
 }
+
+@Riverpod(keepAlive: true)
+class AuthActionController extends _$AuthActionController {
+  @override
+  AuthAction build() {
+    return AuthAction.signIn;
+  }
+
+  changeAuthAction() {
+    if (state == AuthAction.signIn) {
+      state = AuthAction.signUp;
+    } else {
+      state = AuthAction.signIn;
+    }
+  }
+}

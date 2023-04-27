@@ -22,4 +22,21 @@ final authProviderProvider =
 
 typedef AuthProviderRef
     = ProviderRef<List<AuthProvider<AuthListener, AuthCredential>>>;
+String _$authActionControllerHash() =>
+    r'adc2d3835cc5b75578391ac7eb4b7b422c9ca632';
+
+/// See also [AuthActionController].
+@ProviderFor(AuthActionController)
+final authActionControllerProvider =
+    NotifierProvider<AuthActionController, AuthAction>.internal(
+  AuthActionController.new,
+  name: r'authActionControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$authActionControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$AuthActionController = Notifier<AuthAction>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

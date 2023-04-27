@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/auth_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 
