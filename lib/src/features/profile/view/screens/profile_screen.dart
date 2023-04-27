@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -5,8 +6,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_details_controller.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_controller.dart';
 
 class ProfileDetailsScreen extends HookConsumerWidget {
   const ProfileDetailsScreen({super.key});
@@ -19,7 +22,7 @@ class ProfileDetailsScreen extends HookConsumerWidget {
     // ユーザー情報を取得する関数
     void getUser() async {
       final profileDetailsController =
-          ref.read(profileDetailsControllerProvider.notifier);
+          ref.read(profileControllerProvider.notifier);
       final result = await profileDetailsController.getUser();
       user.value = result;
     }
@@ -54,6 +57,16 @@ class ProfileDetailsScreen extends HookConsumerWidget {
               ),
             ),
             const Spacer(),
+            Align(
+              alignment: Alignment.center,
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: CachedNetworkImageProvider(
+                  user.value?.userIcon ?? Urls.defaultIcon,
+                ),
+              ),
+            ),
+            PaddingStyle.v32,
             Text('name : ${user.value?.userName ?? ''}'),
             const SizedBox(height: 24),
             Text('email : ${user.value?.email ?? ''}'),
