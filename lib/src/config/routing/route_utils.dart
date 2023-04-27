@@ -1,6 +1,7 @@
 // todoアプリの画面遷移を管理するenum
 enum AppPage {
   login,
+  register,
   teamTodoList,
   myTodoList,
   addTodo,
@@ -13,6 +14,8 @@ extension AppPageExtension on AppPage {
     switch (this) {
       case AppPage.login:
         return '/login';
+      case AppPage.register:
+        return '/register';
       case AppPage.teamTodoList:
         return '/Team-todo-list';
       case AppPage.myTodoList:

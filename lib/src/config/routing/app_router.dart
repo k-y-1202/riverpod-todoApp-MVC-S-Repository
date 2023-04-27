@@ -15,28 +15,30 @@ part 'app_router.g.dart';
 
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
-  final authRepository = ref.watch(firebaseAuthProvider);
+  final firebaseAuth = ref.watch(firebaseAuthProvider);
   return GoRouter(
     initialLocation: AppPage.login.toPath,
-    debugLogDiagnostics: true, // デバッグ時にログを出力する
+    debugLogDiagnostics: true,
     // ログイン状態に応じて画面遷移先を変更する
     redirect: (context, state) {
-      final isLoggedIn = authRepository.currentUser != null;
-      // ログインしている場合は、ログイン画面に遷移しない
+      final isLoggedIn = firebaseAuth.currentUser != null;
+      final isLoginOrRegister = state.subloc.startsWith(AppPage.login.toPath) ||
+          state.subloc.startsWith(AppPage.register.toPath);
       if (isLoggedIn) {
-        if (state.subloc.startsWith(AppPage.login.toPath)) {
+        if (isLoginOrRegister) {
           return AppPage.teamTodoList.toPath;
         }
-      }
-      // ログインしていない場合は、ログイン画面に遷移する
-      else {
+      } else {
+        if (isLoginOrRegister) {
+          return null;
+        }
         return AppPage.login.toPath;
       }
       return null;
     },
     // ログイン状態の変更を検知する
     refreshListenable: GoRouterRefreshStream(
-      authRepository.authStateChanges(),
+      firebaseAuth.authStateChanges(),
     ),
     routes: [
       // ログイン画面
@@ -44,6 +46,13 @@ GoRouter goRouter(GoRouterRef ref) {
         path: AppPage.login.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignInUpScreen(isRegister: false),
+        ),
+      ),
+      // 新規登録画面
+      GoRoute(
+        path: AppPage.register.toPath,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: SignInUpScreen(isRegister: true),
         ),
       ),
       ShellRoute(
