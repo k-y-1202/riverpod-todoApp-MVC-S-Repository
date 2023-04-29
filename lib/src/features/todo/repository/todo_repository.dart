@@ -48,8 +48,11 @@ class TodoRepository {
   Future<void> updateTodo({
     required String todoId,
     required bool isDone,
+    required String title,
   }) async =>
-      await _db.doc(todoId).update({Keys.isDone: isDone});
+      await _db.doc(todoId).update(
+        {Keys.isDone: isDone, Keys.title: title},
+      );
 
   // read
   // 自分だけのTodoを取得
