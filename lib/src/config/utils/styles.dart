@@ -22,6 +22,7 @@ class PaddingStyle {
   static const v8 = SizedBox(height: 8);
   static const v16 = SizedBox(height: 16);
   static const v32 = SizedBox(height: 32);
+  static const h8 = SizedBox(width: 8);
   static const h16 = SizedBox(width: 16);
   static const h32 = SizedBox(width: 32);
 }
