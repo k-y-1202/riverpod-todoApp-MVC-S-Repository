@@ -16,8 +16,8 @@ class AddTodoScreen extends HookConsumerWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
     final addTodoController = ref.watch(addTodoControllerProvider);
 
+    // タスク追加時にsnack barを表示
     ref.listen(addTodoControllerProvider, (previous, next) {
-      // snack barを表示
       if (previous is AsyncLoading) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -53,11 +53,13 @@ class AddTodoScreen extends HookConsumerWidget {
                 PrimaryButton(
                   width: double.infinity,
                   text: 'タスク追加',
-                  onPressed: () {
+                  onPressed: () async {
                     String title = titleController.text;
                     final addTodoController =
                         ref.read(addTodoControllerProvider.notifier);
-                    addTodoController.addTodo(title);
+                    await addTodoController
+                        .addTodo(title)
+                        .then((_) => context.go(AppPage.myTodoList.toPath));
                   },
                 ),
               ],
