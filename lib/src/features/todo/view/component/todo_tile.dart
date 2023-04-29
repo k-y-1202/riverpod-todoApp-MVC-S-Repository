@@ -7,7 +7,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/repository/todo_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/component/todo_pop_up_menu_button.dart';
 
 class TodoTile extends HookConsumerWidget {
   const TodoTile({
@@ -68,25 +68,7 @@ class TodoTile extends HookConsumerWidget {
             ],
           ),
         ),
-        if (todo.userId == currentUserId)
-          IconButton(
-            onPressed: () async {
-              final todoRepo = ref.read(todoRepoProvider);
-              await todoRepo
-                  .updateTodo(
-                    isDone: true,
-                    todoId: todo.todoId,
-                  )
-                  .then(
-                    (value) => ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('タスクを削除しました'),
-                      ),
-                    ),
-                  );
-            },
-            icon: const Icon(Icons.delete),
-          ),
+        if (todo.userId == currentUserId) TodoPopUpMenuButton(todo: todo),
       ],
     );
   }
