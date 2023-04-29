@@ -21,6 +21,5 @@ class EditTodoController extends _$EditTodoController {
           title: title,
           isDone: isDone,
         );
-    state = const AsyncData(null);
   }
 }
