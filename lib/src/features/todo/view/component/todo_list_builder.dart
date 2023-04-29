@@ -40,7 +40,7 @@ class TodoListBuilder extends ConsumerWidget {
 
   _divider() {
     return const Divider(
-      height: 20,
+      height: 4,
       thickness: 4,
       color: ColorName.black,
     );
