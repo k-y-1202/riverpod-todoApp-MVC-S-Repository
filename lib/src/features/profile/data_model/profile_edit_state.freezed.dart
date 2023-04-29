@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileEditState {
-  File? get imageFile => throw _privateConstructorUsedError;
+  Uint8List? get uint8List => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $ProfileEditStateCopyWith<$Res> {
           ProfileEditState value, $Res Function(ProfileEditState) then) =
       _$ProfileEditStateCopyWithImpl<$Res, ProfileEditState>;
   @useResult
-  $Res call({File? imageFile, User? user});
+  $Res call({Uint8List? uint8List, User? user});
 
   $UserCopyWith<$Res>? get user;
 }
@@ -48,14 +48,14 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageFile = freezed,
+    Object? uint8List = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      imageFile: freezed == imageFile
-          ? _value.imageFile
-          : imageFile // ignore: cast_nullable_to_non_nullable
-              as File?,
+      uint8List: freezed == uint8List
+          ? _value.uint8List
+          : uint8List // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -84,7 +84,7 @@ abstract class _$$_ProfileEditStateCopyWith<$Res>
       __$$_ProfileEditStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({File? imageFile, User? user});
+  $Res call({Uint8List? uint8List, User? user});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -101,14 +101,14 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageFile = freezed,
+    Object? uint8List = freezed,
     Object? user = freezed,
   }) {
     return _then(_$_ProfileEditState(
-      imageFile: freezed == imageFile
-          ? _value.imageFile
-          : imageFile // ignore: cast_nullable_to_non_nullable
-              as File?,
+      uint8List: freezed == uint8List
+          ? _value.uint8List
+          : uint8List // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -120,16 +120,16 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileEditState implements _ProfileEditState {
-  _$_ProfileEditState({this.imageFile, this.user});
+  _$_ProfileEditState({this.uint8List, this.user});
 
   @override
-  final File? imageFile;
+  final Uint8List? uint8List;
   @override
   final User? user;
 
   @override
   String toString() {
-    return 'ProfileEditState(imageFile: $imageFile, user: $user)';
+    return 'ProfileEditState(uint8List: $uint8List, user: $user)';
   }
 
   @override
@@ -137,13 +137,13 @@ class _$_ProfileEditState implements _ProfileEditState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileEditState &&
-            (identical(other.imageFile, imageFile) ||
-                other.imageFile == imageFile) &&
+            const DeepCollectionEquality().equals(other.uint8List, uint8List) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageFile, user);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(uint8List), user);
 
   @JsonKey(ignore: true)
   @override
@@ -153,11 +153,11 @@ class _$_ProfileEditState implements _ProfileEditState {
 }
 
 abstract class _ProfileEditState implements ProfileEditState {
-  factory _ProfileEditState({final File? imageFile, final User? user}) =
+  factory _ProfileEditState({final Uint8List? uint8List, final User? user}) =
       _$_ProfileEditState;
 
   @override
-  File? get imageFile;
+  Uint8List? get uint8List;
   @override
   User? get user;
   @override

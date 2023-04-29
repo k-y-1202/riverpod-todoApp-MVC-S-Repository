@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
@@ -34,8 +35,27 @@ class UserRepository {
   Future<void> updateUser({
     required String userId,
     required String userName,
-  }) async =>
+    required String? userIcon,
+  }) async {
+    if (userIcon != null) {
+      await _db
+          .doc(userId)
+          .update({'userName': userName, 'userIcon': userIcon});
+    } else {
       await _db.doc(userId).update({'userName': userName});
+    }
+  }
+
+  // uint8Listをstorageに保存
+  Future<void> updateUserIcon({
+    required String userId,
+    required Uint8List uint8list,
+  }) async {
+    await ref
+        .read(firebaseStorageProvider)
+        .ref('userIcon/$userId')
+        .putData(uint8list);
+  }
 
   // read
   Future<User?> getUser({required String userId}) async =>

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
@@ -11,12 +12,12 @@ part 'profile_edit_controller.g.dart';
 
 @riverpod
 class ProfileEditController extends _$ProfileEditController {
-  File? imageFile;
+  Uint8List? uint8List;
 
   @override
   Future<ProfileEditState> build() async {
     return ProfileEditState(
-      imageFile: imageFile,
+      uint8List: uint8List,
       user: await getUser(),
     );
   }
@@ -29,17 +30,26 @@ class ProfileEditController extends _$ProfileEditController {
   Future<void> updateUser({
     required String userId,
     required String userName,
+    required Uint8List? uint8list,
   }) async {
+    String? userIcon;
+    if (uint8List != null) {
+      userIcon = await ref.read(profileServiceProvider).updateUserIcon(
+            userId: userId,
+            uint8List: uint8List!,
+          );
+    }
     await ref.read(userRepoProvider).updateUser(
           userId: userId,
           userName: userName,
+          userIcon: '$userIcon.png',
         );
   }
 
   Future<void> pickImage() async {
-    imageFile = await ref.read(profileServiceProvider).pickImage();
-    if (imageFile != null) {
-      state = AsyncValue.data(state.value!.copyWith(imageFile: imageFile));
+    uint8List = await ref.read(profileServiceProvider).pickImage();
+    if (uint8List != null) {
+      state = AsyncValue.data(state.value!.copyWith(uint8List: uint8List!));
     }
   }
 }

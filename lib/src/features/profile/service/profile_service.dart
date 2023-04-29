@@ -1,10 +1,9 @@
-import 'dart:io';
-
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/pick/pick_export.dart';
 
 part 'profile_service.g.dart';
 
@@ -16,20 +15,16 @@ class ProfileService {
   ProfileService({required this.ref});
   final Ref ref;
 
-  Future<void> updateUserIcon(
-      {required String userId, required String userIcon}) async {
-    await ref
+  Future<String> updateUserIcon(
+      {required String userId, required Uint8List uint8List}) async {
+    return ref
         .read(firebaseStorageProvider)
-        .ref('userIcon/$userId')
-        .putString(userIcon);
+        .ref('userIcon/$userId.png')
+        .putData(uint8List, SettableMetadata(contentType: 'image/png'))
+        .then((value) => (value.ref.getDownloadURL()));
   }
 
-  Future<File?> pickImage() async {
-    if (kIsWeb) {
-      return null;
-    }
-    final imagePicker = ImagePicker();
-    final pickedImage = await imagePicker.pickImage(source: ImageSource.camera);
-    return (pickedImage != null) ? File(pickedImage.path) : null;
+  Future<Uint8List?> pickImage() async {
+    return await Pick().pickFile();
   }
 }

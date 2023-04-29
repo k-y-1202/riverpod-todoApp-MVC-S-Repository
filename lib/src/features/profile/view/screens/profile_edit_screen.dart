@@ -53,14 +53,24 @@ class ProfileEditScreen extends HookConsumerWidget {
                 onTap: () => ref
                     .read(profileEditControllerProvider.notifier)
                     .pickImage(),
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: state.value?.imageFile != null
-                      ? Image.file(state.value!.imageFile!).image
-                      : CachedNetworkImageProvider(
-                          // user.value?.userIcon ?? Urls.defaultIcon,
-                          state.value?.user?.userIcon ?? Urls.defaultIcon,
-                        ),
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: state.value?.uint8List != null
+                          ? Image.memory(state.value!.uint8List!).image
+                          : CachedNetworkImageProvider(
+                              state.value?.user?.userIcon ?? Urls.defaultIcon,
+                            ),
+                    ),
+                    const CircleAvatar(
+                      radius: 20,
+                      backgroundColor: ColorName.black,
+                      foregroundColor: ColorName.white,
+                      child: Icon(Icons.edit),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -72,12 +82,13 @@ class ProfileEditScreen extends HookConsumerWidget {
             const SizedBox(height: 32),
             PrimaryButton(
               width: double.infinity,
-              text: '名前変更',
+              text: '確定する',
               onPressed: () {
                 profileEditController
                     .updateUser(
                       userId: user.value!.userId,
                       userName: nameController.text,
+                      uint8list: state.value!.uint8List!,
                     )
                     .then((value) => context.go(AppPage.profile.toPath));
               },
