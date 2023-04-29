@@ -1,5 +1,5 @@
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
@@ -19,7 +19,7 @@ class ProfileService {
       {required String userId, required Uint8List uint8List}) async {
     return ref
         .read(firebaseStorageProvider)
-        .ref('userIcon/$userId.png')
+        .ref('userIcon/$userId')
         .putData(uint8List, SettableMetadata(contentType: 'image/png'))
         .then((value) => (value.ref.getDownloadURL()));
   }
