@@ -10,7 +10,7 @@ class AddTodoController extends _$AddTodoController {
   @override
   FutureOr<void> build() {}
 
-  void addTodo(String title) async {
+  Future<void> addTodo(String title) async {
     state = const AsyncLoading();
     await ref.read(todoRepoProvider).addTodo(title: title);
     state = const AsyncData(null);
