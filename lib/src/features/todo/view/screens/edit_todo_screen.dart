@@ -36,7 +36,7 @@ class EditTodoScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('タスク編集画面'),
         leading: IconButton(
-          onPressed: () => context.go(AppPage.myTodoList.toPath),
+          onPressed: () => context.pop(),
           icon: const Icon(
             Icons.arrow_back,
           ),
@@ -64,7 +64,7 @@ class EditTodoScreen extends HookConsumerWidget {
                         ref.read(editTodoControllerProvider.notifier);
                     await editTodoController
                         .editTodo(todoId: todoId, title: title, isDone: false)
-                        .then((_) => context.go(AppPage.myTodoList.toPath));
+                        .then((_) => context.pop());
                   },
                 ),
               ],
