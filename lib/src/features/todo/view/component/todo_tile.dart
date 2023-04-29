@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
@@ -44,9 +46,24 @@ class TodoTile extends HookConsumerWidget {
                 style: StyleName.title,
               ),
               const SizedBox(height: 4),
-              Text(
-                '投稿者：${user.value?.userName ?? ''}',
-                style: StyleName.description,
+              Row(
+                children: [
+                  const Text(
+                    '投稿者：',
+                    style: StyleName.description,
+                  ),
+                  CircleAvatar(
+                    radius: 10,
+                    backgroundImage: CachedNetworkImageProvider(
+                      user.value?.userIcon ?? Urls.defaultIcon,
+                    ),
+                  ),
+                  PaddingStyle.h8,
+                  Text(
+                    user.value?.userName ?? '',
+                    style: StyleName.description,
+                  ),
+                ],
               ),
             ],
           ),
