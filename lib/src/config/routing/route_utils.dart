@@ -5,6 +5,7 @@ enum AppPage {
   teamTodoList,
   myTodoList,
   addTodo,
+  editTodo,
   profile,
   editProfile,
 }
@@ -22,10 +23,21 @@ extension AppPageExtension on AppPage {
         return '/my-todo-list';
       case AppPage.addTodo:
         return '/add-todo';
+      case AppPage.editTodo:
+        return '/edit-todo';
       case AppPage.profile:
         return '/profile';
       case AppPage.editProfile:
         return '/edit-profile';
+    }
+  }
+
+  String get paramName {
+    switch (this) {
+      case AppPage.editTodo:
+        return 'todoId';
+      default:
+        return '';
     }
   }
 }

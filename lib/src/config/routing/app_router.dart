@@ -8,6 +8,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_edit_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/add_todo_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/edit_todo_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/my_todo_list_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/team_todo_list_screen.dart';
 
@@ -85,6 +86,16 @@ GoRouter goRouter(GoRouterRef ref) {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: AddTodoScreen(),
             ),
+          ),
+          // todo編集画面
+          GoRoute(
+            path: '${AppPage.editTodo.toPath}/:todoId',
+            pageBuilder: (context, state) {
+              final String todoId = state.params['todoId'] ?? '';
+              return NoTransitionPage(
+                child: EditTodoScreen(todoId: todoId),
+              );
+            },
           ),
           // プロフィール画面
           GoRoute(

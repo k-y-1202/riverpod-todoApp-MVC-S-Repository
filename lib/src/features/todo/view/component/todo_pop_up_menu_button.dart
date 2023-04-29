@@ -58,6 +58,6 @@ class TodoPopUpMenuButton extends ConsumerWidget {
   }
 
   _editTodo({required BuildContext context}) {
-    context.go(AppPage.addTodo.toPath);
+    context.go('${AppPage.editTodo.toPath}/${todo.todoId}');
   }
 }
