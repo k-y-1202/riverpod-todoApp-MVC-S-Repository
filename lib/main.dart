@@ -27,21 +27,11 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.read(goRouterProvider);
     return MaterialApp.router(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false, // debug用のバナーを非表示
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       routerConfig: router,
     );
-  }
-}
-
-class TestScreen extends StatelessWidget {
-  const TestScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
