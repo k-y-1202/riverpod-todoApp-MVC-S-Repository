@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/repository/todo_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/service/todo_service.dart';
 
 class TodoPopUpMenuButton extends ConsumerWidget {
   const TodoPopUpMenuButton({
@@ -42,11 +43,11 @@ class TodoPopUpMenuButton extends ConsumerWidget {
   }
 
   _changeToDone({required BuildContext context, required WidgetRef ref}) async {
-    final todoRepo = ref.read(todoRepoProvider);
+    final todoRepo = ref.read(todoServiceProvider.notifier);
     await todoRepo
-        .updateTodo(
-          isDone: true,
+        .changeToDone(
           todoId: todo.todoId,
+          title: todo.title,
         )
         .then(
           (value) => ScaffoldMessenger.of(context).showSnackBar(
