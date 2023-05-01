@@ -1,7 +1,5 @@
-import 'dart:io';
-
-import 'package:flutter/services.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter/services.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
@@ -42,7 +40,7 @@ class ProfileEditController extends _$ProfileEditController {
     await ref.read(userRepoProvider).updateUser(
           userId: userId,
           userName: userName,
-          userIcon: '$userIcon.png',
+          userIcon: userIcon,
         );
   }
 
