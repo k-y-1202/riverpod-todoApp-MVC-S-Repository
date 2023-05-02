@@ -20,7 +20,6 @@ class EditProfileController extends _$EditProfileController {
     });
   }
 
-  User get currentUser => ref.watch(authServiceProvider.notifier).currentUser!;
   Uint8List? uint8List;
   late UserService _userService;
 
@@ -30,8 +29,10 @@ class EditProfileController extends _$EditProfileController {
     return EditProfileState();
   }
 
-  Future<User?> getUser() async =>
-      await _userService.getUser(userId: currentUser.userId);
+  Future<User?> getUser() async {
+    final currentUser = ref.watch(firebaseAuthProvider).currentUser!;
+    return await _userService.getUser(userId: currentUser.uid);
+  }
 
   Future<void> updateUser({
     required String userId,
@@ -41,7 +42,9 @@ class EditProfileController extends _$EditProfileController {
     state = state.copyWith(isLoading: true);
     String? userIcon;
 
-    User user = currentUser;
+    final currentUser = ref.watch(firebaseAuthProvider).currentUser!;
+    User? user = await _userService.getUser(userId: currentUser.uid);
+    if (user == null) return;
     user = user.copyWith(userName: userName);
 
     if (uint8List != null) {

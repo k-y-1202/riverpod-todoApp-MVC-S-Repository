@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
@@ -14,11 +13,10 @@ class ProfileController extends _$ProfileController {
     _userService = ref.read(userServiceProvider.notifier);
   }
 
-  User get currentUser => ref.watch(authServiceProvider.notifier).currentUser!;
-
   late UserService _userService;
 
   Future<User?> getUser() async {
-    return await _userService.getUser(userId: currentUser.userId);
+    final currentUser = ref.watch(firebaseAuthProvider).currentUser!;
+    return await _userService.getUser(userId: currentUser.uid);
   }
 }
