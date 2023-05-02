@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/change_auth_state.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/state/change_auth_state.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 
 part 'change_auth_controller.g.dart';

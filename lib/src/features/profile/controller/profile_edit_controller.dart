@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/user_service.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/data_model/edit_profile_state.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/data_model/state/edit_profile_state.dart';
 
 part 'profile_edit_controller.g.dart';
 

@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/sign_in_up_state.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/state/sign_in_up_state.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 
 part 'sign_in_up_controller.g.dart';
