@@ -125,7 +125,7 @@ GoRouter goRouter(GoRouterRef ref) {
           GoRoute(
             path: AppPage.profile.toPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: ProfileDetailsScreen(),
+              child: ProfileScreen(),
             ),
           ),
           // プロフィール編集画面
