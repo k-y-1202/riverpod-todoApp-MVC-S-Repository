@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_edit_controller.dart';
+part of 'edit_profile_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$profileEditControllerHash() =>
-    r'abedd6125155f98fee0a474866ca6766f6d44186';
+    r'ee675e351686c1d48128424c806bb3e3937461f0';
 
 /// See also [ProfileEditController].
 @ProviderFor(ProfileEditController)

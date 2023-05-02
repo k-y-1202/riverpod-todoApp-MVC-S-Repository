@@ -7,7 +7,9 @@ part 'sign_in_up_controller.g.dart';
 
 @riverpod
 class SignInUpController extends _$SignInUpController {
-  SignInUpController();
+  SignInUpController() {
+    _authService = ref.read(authServiceProvider.notifier);
+  }
 
   @override
   SignInUpState build() {
@@ -18,6 +20,8 @@ class SignInUpController extends _$SignInUpController {
     );
   }
 
+  late AuthService _authService;
+
   // ログイン・新規登録
   Future<void> signInUp({required bool isRegister}) async {
     state = state.copyWith(isLoading: true);
@@ -27,11 +31,11 @@ class SignInUpController extends _$SignInUpController {
     state.emailController.clear();
     state.passController.clear();
 
-    await ref.read(authServiceProvider).signInUp(
-          isRegister: isRegister,
-          email: email,
-          pass: pass,
-        );
+    await _authService.signInUp(
+      isRegister: isRegister,
+      email: email,
+      pass: pass,
+    );
 
     state = state.copyWith(isLoading: false);
   }

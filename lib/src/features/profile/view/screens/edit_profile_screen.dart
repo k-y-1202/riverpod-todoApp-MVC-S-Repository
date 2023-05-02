@@ -9,7 +9,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_util
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_edit_controller.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/edit_profile_controller.dart';
 
 class EditProfileScreen extends HookConsumerWidget {
   const EditProfileScreen({super.key});

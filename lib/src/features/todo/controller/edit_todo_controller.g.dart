@@ -7,7 +7,7 @@ part of 'edit_todo_controller.dart';
 // **************************************************************************
 
 String _$editTodoControllerHash() =>
-    r'ec1082417ab4b0fbc31cb69798ff547228a8bf03';
+    r'e727a64ac4391f1d2937cf66346a427bfc5c8b1b';
 
 /// See also [EditTodoController].
 @ProviderFor(EditTodoController)

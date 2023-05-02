@@ -5,17 +5,21 @@ part 'reset_pass_controller.g.dart';
 
 @riverpod
 class ResetPassController extends _$ResetPassController {
-  ResetPassController();
+  ResetPassController() {
+    _authService = ref.read(authServiceProvider.notifier);
+  }
 
   @override
   bool build() {
     return false;
   }
 
+  late AuthService _authService;
+
   Future<void> resetPass(String email) async {
     state = true;
 
-    await ref.read(authServiceProvider).resetPass(email);
+    await _authService.resetPass(email);
 
     state = false;
   }

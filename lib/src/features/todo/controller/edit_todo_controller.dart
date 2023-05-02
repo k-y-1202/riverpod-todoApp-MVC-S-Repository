@@ -5,10 +5,14 @@ part 'edit_todo_controller.g.dart';
 
 @riverpod
 class EditTodoController extends _$EditTodoController {
-  EditTodoController() : super();
+  EditTodoController() {
+    _todoService = ref.read(todoServiceProvider.notifier);
+  }
 
   @override
   FutureOr<void> build() {}
+
+  late TodoService _todoService;
 
   Future<void> editTodo({
     required String todoId,
@@ -16,10 +20,10 @@ class EditTodoController extends _$EditTodoController {
     required bool isDone,
   }) async {
     state = const AsyncLoading();
-    await ref.read(todoServiceProvider.notifier).editTodo(
-          todoId: todoId,
-          title: title,
-          isDone: isDone,
-        );
+    await _todoService.editTodo(
+      todoId: todoId,
+      title: title,
+      isDone: isDone,
+    );
   }
 }

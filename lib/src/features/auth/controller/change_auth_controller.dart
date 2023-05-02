@@ -7,7 +7,9 @@ part 'change_auth_controller.g.dart';
 
 @riverpod
 class ChangeAuthController extends _$ChangeAuthController {
-  ChangeAuthController();
+  ChangeAuthController() {
+    _authService = ref.read(authServiceProvider.notifier);
+  }
 
   @override
   ChangeAuthState build() {
@@ -18,6 +20,8 @@ class ChangeAuthController extends _$ChangeAuthController {
     );
   }
 
+  late AuthService _authService;
+
   Future<void> changeEmail() async {
     state = state.copyWith(isLoading: true);
 
@@ -25,7 +29,7 @@ class ChangeAuthController extends _$ChangeAuthController {
     if (email == '') return;
     state.emailController.clear();
 
-    await ref.read(authServiceProvider).changeEmail(email);
+    await _authService.changeEmail(email);
 
     state = state.copyWith(isLoading: false);
   }
@@ -36,7 +40,7 @@ class ChangeAuthController extends _$ChangeAuthController {
     final String pass = state.passController.text;
     state.passController.clear();
 
-    await ref.read(authServiceProvider).changePass(pass);
+    await _authService.changePass(pass);
 
     state = state.copyWith(isLoading: false);
   }
