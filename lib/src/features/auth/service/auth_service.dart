@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
@@ -9,18 +8,17 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/
 part 'auth_service.g.dart';
 
 @riverpod
-AuthService authService(AuthServiceRef ref) {
-  return AuthService(ref: ref);
-}
+class AuthService extends _$AuthService {
+  AuthService() {
+    _auth = ref.read(firebaseAuthProvider);
+    _userRepo = ref.read(userRepoProvider.notifier);
+  }
 
-class AuthService {
-  AuthService({required this.ref})
-      : _auth = ref.read(firebaseAuthProvider),
-        _userRepo = ref.read(userRepoProvider);
+  late auth.FirebaseAuth _auth;
+  late UserRepo _userRepo;
 
-  final Ref ref;
-  final auth.FirebaseAuth _auth;
-  final UserRepository _userRepo;
+  @override
+  build() {}
 
   // ログイン・新規登録
   Future<void> signInUp({
@@ -28,7 +26,7 @@ class AuthService {
     required String email,
     required String pass,
   }) async {
-    final userCredential = isRegister
+    isRegister
         ? await _auth.createUserWithEmailAndPassword(
             email: email,
             password: pass,

@@ -10,26 +10,28 @@ part 'user_service.g.dart';
 
 @riverpod
 class UserService extends _$UserService {
-  UserService();
-
-  @override
-  build() {
-    return null;
+  UserService() {
+    _userRepo = ref.read(userRepoProvider.notifier);
+    _firebaseStorage = ref.read(firebaseStorageProvider);
   }
 
-  Future<void> addUser(User user) async =>
-      await ref.read(userRepoProvider).addUser(user: user);
+  @override
+  build() {}
+
+  late UserRepo _userRepo;
+  late FirebaseStorage _firebaseStorage;
+
+  Future<void> addUser(User user) async => await _userRepo.addUser(user: user);
 
   Future<User?> getUser({required String userId}) async =>
-      await ref.read(userRepoProvider).getUser(userId: userId);
+      await _userRepo.getUser(userId: userId);
 
   Future<void> updateUser({required User user}) async =>
-      await ref.read(userRepoProvider).updateUser(user: user);
+      await _userRepo.updateUser(user: user);
 
   Future<String> updateUserIcon(
           {required String userId, required Uint8List uint8List}) async =>
-      ref
-          .read(firebaseStorageProvider)
+      _firebaseStorage
           .ref('userIcon/$userId')
           .putData(uint8List, SettableMetadata(contentType: 'image/png'))
           .then(

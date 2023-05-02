@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
@@ -19,12 +18,15 @@ CollectionReference<User> userFirestore(UserFirestoreRef ref) {
 }
 
 @riverpod
-UserRepository userRepo(UserRepoRef ref) => UserRepository(ref: ref);
+class UserRepo extends _$UserRepo {
+  UserRepo() {
+    _db = ref.read(userFirestoreProvider);
+  }
 
-class UserRepository {
-  UserRepository({required this.ref}) : _db = ref.read(userFirestoreProvider);
-  final Ref ref;
-  final CollectionReference<User> _db;
+  late CollectionReference<User> _db;
+
+  @override
+  build() {}
 
   // create
   Future<void> addUser({required User user}) async =>

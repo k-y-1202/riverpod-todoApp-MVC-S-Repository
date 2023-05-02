@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/keys.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
@@ -20,12 +19,15 @@ CollectionReference<Todo> todoFirestore(TodoFirestoreRef ref) {
 }
 
 @riverpod
-TodoRepository todoRepo(TodoRepoRef ref) => TodoRepository(ref: ref);
+class TodoRepo extends _$TodoRepo {
+  TodoRepo() {
+    _db = ref.read(todoFirestoreProvider);
+  }
 
-class TodoRepository {
-  TodoRepository({required this.ref}) : _db = ref.read(todoFirestoreProvider);
-  final Ref ref;
-  final CollectionReference<Todo> _db;
+  late CollectionReference<Todo> _db;
+
+  @override
+  build() {}
 
   // create
   Future<void> addTodo({

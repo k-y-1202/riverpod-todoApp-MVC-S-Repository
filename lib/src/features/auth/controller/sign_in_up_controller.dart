@@ -7,7 +7,7 @@ part 'sign_in_up_controller.g.dart';
 
 @riverpod
 class SignInUpController extends _$SignInUpController {
-  SignInUpController() : super();
+  SignInUpController();
 
   @override
   SignInUpState build() {

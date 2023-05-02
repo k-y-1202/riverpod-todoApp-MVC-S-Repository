@@ -122,7 +122,7 @@ class __$$_ChangeAuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChangeAuthState implements _ChangeAuthState {
-  _$_ChangeAuthState(
+  const _$_ChangeAuthState(
       {this.isLoading = false,
       required this.emailController,
       required this.passController});
@@ -165,7 +165,7 @@ class _$_ChangeAuthState implements _ChangeAuthState {
 }
 
 abstract class _ChangeAuthState implements ChangeAuthState {
-  factory _ChangeAuthState(
+  const factory _ChangeAuthState(
           {final bool isLoading,
           required final TextEditingController emailController,
           required final TextEditingController passController}) =

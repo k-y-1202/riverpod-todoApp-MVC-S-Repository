@@ -22,12 +22,13 @@ final todoFirestoreProvider =
 );
 
 typedef TodoFirestoreRef = AutoDisposeProviderRef<CollectionReference<Todo>>;
-String _$todoRepoHash() => r'2c589d4a1ddce1408b3415c7dc50f2ca46a012fa';
+String _$todoRepoHash() => r'08e0eb2932a09845c24a7029e2cd577fe8d2e8b8';
 
-/// See also [todoRepo].
-@ProviderFor(todoRepo)
-final todoRepoProvider = AutoDisposeProvider<TodoRepository>.internal(
-  todoRepo,
+/// See also [TodoRepo].
+@ProviderFor(TodoRepo)
+final todoRepoProvider =
+    AutoDisposeNotifierProvider<TodoRepo, dynamic>.internal(
+  TodoRepo.new,
   name: r'todoRepoProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$todoRepoHash,
@@ -35,5 +36,5 @@ final todoRepoProvider = AutoDisposeProvider<TodoRepository>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef TodoRepoRef = AutoDisposeProviderRef<TodoRepository>;
+typedef _$TodoRepo = AutoDisposeNotifier<dynamic>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

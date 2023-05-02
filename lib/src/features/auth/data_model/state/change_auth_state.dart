@@ -5,7 +5,7 @@ part 'change_auth_state.freezed.dart';
 
 @freezed
 class ChangeAuthState with _$ChangeAuthState {
-  factory ChangeAuthState({
+  const factory ChangeAuthState({
     @Default(false) bool isLoading,
     required TextEditingController emailController,
     required TextEditingController passController,
