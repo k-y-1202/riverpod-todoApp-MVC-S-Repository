@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EditProfileState {
+  bool get isLoading => throw _privateConstructorUsedError;
   Uint8List? get uint8List => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
@@ -30,7 +31,7 @@ abstract class $EditProfileStateCopyWith<$Res> {
           EditProfileState value, $Res Function(EditProfileState) then) =
       _$EditProfileStateCopyWithImpl<$Res, EditProfileState>;
   @useResult
-  $Res call({Uint8List? uint8List, User? user});
+  $Res call({bool isLoading, Uint8List? uint8List, User? user});
 
   $UserCopyWith<$Res>? get user;
 }
@@ -48,10 +49,15 @@ class _$EditProfileStateCopyWithImpl<$Res, $Val extends EditProfileState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? uint8List = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       uint8List: freezed == uint8List
           ? _value.uint8List
           : uint8List // ignore: cast_nullable_to_non_nullable
@@ -84,7 +90,7 @@ abstract class _$$_EditProfileStateCopyWith<$Res>
       __$$_EditProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Uint8List? uint8List, User? user});
+  $Res call({bool isLoading, Uint8List? uint8List, User? user});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -101,10 +107,15 @@ class __$$_EditProfileStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? uint8List = freezed,
     Object? user = freezed,
   }) {
     return _then(_$_EditProfileState(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       uint8List: freezed == uint8List
           ? _value.uint8List
           : uint8List // ignore: cast_nullable_to_non_nullable
@@ -120,8 +131,11 @@ class __$$_EditProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EditProfileState implements _EditProfileState {
-  _$_EditProfileState({this.uint8List, this.user});
+  _$_EditProfileState({this.isLoading = false, this.uint8List, this.user});
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   @override
   final Uint8List? uint8List;
   @override
@@ -129,7 +143,7 @@ class _$_EditProfileState implements _EditProfileState {
 
   @override
   String toString() {
-    return 'EditProfileState(uint8List: $uint8List, user: $user)';
+    return 'EditProfileState(isLoading: $isLoading, uint8List: $uint8List, user: $user)';
   }
 
   @override
@@ -137,13 +151,15 @@ class _$_EditProfileState implements _EditProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EditProfileState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other.uint8List, uint8List) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(uint8List), user);
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(uint8List), user);
 
   @JsonKey(ignore: true)
   @override
@@ -153,9 +169,13 @@ class _$_EditProfileState implements _EditProfileState {
 }
 
 abstract class _EditProfileState implements EditProfileState {
-  factory _EditProfileState({final Uint8List? uint8List, final User? user}) =
-      _$_EditProfileState;
+  factory _EditProfileState(
+      {final bool isLoading,
+      final Uint8List? uint8List,
+      final User? user}) = _$_EditProfileState;
 
+  @override
+  bool get isLoading;
   @override
   Uint8List? get uint8List;
   @override

@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_button.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/primary/primary_text_field.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/controller/edit_todo_controller.dart';
 
 class EditTodoScreen extends HookConsumerWidget {
@@ -19,7 +18,7 @@ class EditTodoScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final titleController = useTextEditingController();
     final deviceWidth = MediaQuery.of(context).size.width;
-    final editTodoController = ref.watch(editTodoControllerProvider);
+    final isLoading = ref.watch(editTodoControllerProvider);
 
     // タスク編集時にsnack barを表示
     ref.listen(editTodoControllerProvider, (previous, next) {
@@ -42,41 +41,36 @@ class EditTodoScreen extends HookConsumerWidget {
           ),
         ),
       ),
-      body: editTodoController.whenOrNull(
-        data: (data) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.1),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PrimaryTextField(
-                  controller: titleController,
-                  title: 'タスク',
-                  hintText: '洗濯する',
-                ),
-                const SizedBox(height: 32),
-                PrimaryButton(
-                  width: double.infinity,
-                  text: '確定する',
-                  onPressed: () async {
-                    String title = titleController.text;
-                    final editTodoController =
-                        ref.read(editTodoControllerProvider.notifier);
-                    await editTodoController
-                        .editTodo(todoId: todoId, title: title, isDone: false)
-                        .then((_) => context.pop());
-                  },
-                ),
-              ],
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.1),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PrimaryTextField(
+                    controller: titleController,
+                    title: 'タスク',
+                    hintText: '洗濯する',
+                  ),
+                  const SizedBox(height: 32),
+                  PrimaryButton(
+                    width: double.infinity,
+                    text: '確定する',
+                    onPressed: () async {
+                      String title = titleController.text;
+                      final editTodoController =
+                          ref.read(editTodoControllerProvider.notifier);
+                      await editTodoController
+                          .editTodo(todoId: todoId, title: title, isDone: false)
+                          .then((_) => context.pop());
+                    },
+                  ),
+                ],
+              ),
             ),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
     );
   }
 }

@@ -15,8 +15,8 @@ class TodoListBuilder extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authRepository = ref.read(firebaseAuthProvider);
-    final currentUserId = authRepository.currentUser?.uid;
+    final auth = ref.read(firebaseAuthProvider);
+    final currentUserId = auth.currentUser?.uid;
     return StreamBuilder(
         stream: stream,
         builder: (context, snapshot) {

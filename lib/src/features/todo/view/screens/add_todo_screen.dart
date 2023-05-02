@@ -14,7 +14,7 @@ class AddTodoScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final titleController = useTextEditingController();
     final deviceWidth = MediaQuery.of(context).size.width;
-    final addTodoController = ref.watch(addTodoControllerProvider);
+    final isLoading = ref.watch(addTodoControllerProvider);
 
     // タスク追加時にsnack barを表示
     ref.listen(addTodoControllerProvider, (previous, next) {
@@ -37,41 +37,36 @@ class AddTodoScreen extends HookConsumerWidget {
           ),
         ),
       ),
-      body: addTodoController.whenOrNull(
-        data: (data) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.1),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PrimaryTextField(
-                  controller: titleController,
-                  title: 'タスク',
-                  hintText: '洗濯する',
-                ),
-                const SizedBox(height: 32),
-                PrimaryButton(
-                  width: double.infinity,
-                  text: 'タスク追加',
-                  onPressed: () async {
-                    String title = titleController.text;
-                    final addTodoController =
-                        ref.read(addTodoControllerProvider.notifier);
-                    await addTodoController
-                        .addTodo(title)
-                        .then((_) => context.go(AppPage.myTodoList.toPath));
-                  },
-                ),
-              ],
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.1),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PrimaryTextField(
+                    controller: titleController,
+                    title: 'タスク',
+                    hintText: '洗濯する',
+                  ),
+                  const SizedBox(height: 32),
+                  PrimaryButton(
+                    width: double.infinity,
+                    text: 'タスク追加',
+                    onPressed: () async {
+                      String title = titleController.text;
+                      final addTodoController =
+                          ref.read(addTodoControllerProvider.notifier);
+                      await addTodoController
+                          .addTodo(title)
+                          .then((_) => context.go(AppPage.myTodoList.toPath));
+                    },
+                  ),
+                ],
+              ),
             ),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
     );
   }
 }

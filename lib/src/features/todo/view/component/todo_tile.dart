@@ -26,9 +26,11 @@ class TodoTile extends HookConsumerWidget {
     final user = useState<User?>(null); // HooksのStateを使ってユーザー情報を管理
     bool isMe = currentUserId == todo.userId;
 
-    void getUser() async => user.value = await ref
-        .read(userServiceProvider.notifier)
-        .getUser(userId: todo.userId);
+    void getUser() async {
+      user.value = await ref
+          .read(userServiceProvider.notifier)
+          .getUser(userId: todo.userId);
+    }
 
     // 初回build時に発火するHooksの関数
     useEffect(() {

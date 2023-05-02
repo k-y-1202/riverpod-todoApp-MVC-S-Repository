@@ -10,14 +10,14 @@ class MyTodoListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todoListController = ref.watch(todoListControllerProvider.notifier);
+    final controller = ref.watch(todoListControllerProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('自分だけのタスク'),
       ),
       body: TodoListBuilder(
-        stream: todoListController.myTodoList(),
+        stream: controller.myTodoList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

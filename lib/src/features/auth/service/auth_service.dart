@@ -18,6 +18,8 @@ class AuthService extends _$AuthService {
     _userRepo = ref.read(userRepoProvider.notifier);
   }
 
+  User? currentUser;
+
   // ログイン・新規登録
   Future<void> signInUp({
     required bool isRegister,
@@ -41,6 +43,7 @@ class AuthService extends _$AuthService {
       if (!isUserExistedInDb) {
         await _userRepo.addUser(user: _convertToUser(firebaseUser));
       }
+      currentUser = await _userRepo.getUser(userId: firebaseUser.uid);
     }
   }
 

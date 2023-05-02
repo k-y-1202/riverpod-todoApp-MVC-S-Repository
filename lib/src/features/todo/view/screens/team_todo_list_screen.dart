@@ -8,7 +8,7 @@ class TeamTodoListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(todoListControllerProvider.notifier);
+    final controller = ref.watch(todoListControllerProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('みんなのタスク'),
@@ -17,7 +17,7 @@ class TeamTodoListScreen extends ConsumerWidget {
         children: [
           Expanded(
             child: TodoListBuilder(
-              stream: provider.teamTodoList(),
+              stream: controller.teamTodoList(),
             ),
           ),
         ],

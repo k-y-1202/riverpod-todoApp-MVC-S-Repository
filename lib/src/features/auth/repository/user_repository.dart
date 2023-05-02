@@ -20,6 +20,7 @@ CollectionReference<User> userFirestore(UserFirestoreRef ref) {
 @riverpod
 class UserRepo extends _$UserRepo {
   late CollectionReference<User> _db;
+  static User? currentUser;
 
   @override
   build() {
@@ -38,15 +39,11 @@ class UserRepo extends _$UserRepo {
   Future<User?> getUser({required String userId}) async =>
       await _db.doc(userId).get().then((doc) => doc.data());
 
-  Future<bool> searchUser({required String userId}) async {
-    final user = await _db.where(Keys.userId, isEqualTo: userId).get();
-    return user.docs.isNotEmpty;
-  }
-
   // search
   Future<bool> searchUserById({required String userId}) async =>
       await _db.where(Keys.userId, isEqualTo: userId).get().then((doc) {
         if (doc.docs.isNotEmpty) {
+          currentUser = doc.docs.first.data();
           return true;
         } else {
           return false;
