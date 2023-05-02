@@ -94,14 +94,13 @@ class ResetPassScreen extends HookConsumerWidget {
     final controller = ref.read(resetPassControllerProvider.notifier);
 
     try {
-      await controller.resetPass(email).then((value) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('パスワード再設定メールを送信しました。'),
-          ),
-        );
-        context.go(AppPage.login.toPath);
-      });
+      await controller.resetPass(email);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('パスワード再設定メールを送信しました。'),
+        ),
+      );
+      context.go(AppPage.login.toPath);
     } on FirebaseAuthException catch (e) {
       EM.firebaseAuth(context, e.code);
     } catch (e) {

@@ -27,14 +27,15 @@ class UserService extends _$UserService {
   Future<void> updateUser({required User user}) async =>
       await _userRepo.updateUser(user: user);
 
-  Future<String> updateUserIcon(
-          {required String userId, required Uint8List uint8List}) async =>
-      _firebaseStorage
-          .ref('userIcon/$userId')
-          .putData(uint8List, SettableMetadata(contentType: 'image/png'))
-          .then(
-            (value) => (value.ref.getDownloadURL()),
-          );
+  Future<String> updateUserIcon({
+    required String userId,
+    required Uint8List uint8List,
+  }) async {
+    final snapshot = await _firebaseStorage
+        .ref('userIcon/$userId')
+        .putData(uint8List, SettableMetadata(contentType: 'image/png'));
+    return await snapshot.ref.getDownloadURL();
+  }
 
   // pick_export.dartのpickFile()を呼び出す
   Future<Uint8List?> pickImage() async => await Pick().pickFile();

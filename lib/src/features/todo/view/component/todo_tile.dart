@@ -90,20 +90,15 @@ class TodoTile extends HookConsumerWidget {
 
   _changeToDone({required BuildContext context, required WidgetRef ref}) async {
     final controller = ref.read(editTodoControllerProvider.notifier);
-    await controller
-        .editTodo(
+    await controller.editTodo(
       todoId: todo.todoId,
       title: todo.title,
       isDone: true,
-    )
-        .then(
-      (value) {
-        return ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('タスクを削除しました'),
-          ),
-        );
-      },
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('タスクを削除しました'),
+      ),
     );
   }
 }

@@ -59,9 +59,8 @@ class AddTodoScreen extends HookConsumerWidget {
                       String title = titleController.text;
                       final addTodoController =
                           ref.read(addTodoControllerProvider.notifier);
-                      await addTodoController
-                          .addTodo(title)
-                          .then((_) => context.go(AppPage.myTodoList.toPath));
+                      await addTodoController.addTodo(title);
+                      context.go(AppPage.myTodoList.toPath);
                     },
                   ),
                 ],

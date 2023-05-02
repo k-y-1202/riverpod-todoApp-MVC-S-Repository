@@ -63,9 +63,9 @@ class EditTodoScreen extends HookConsumerWidget {
                       String title = titleController.text;
                       final editTodoController =
                           ref.read(editTodoControllerProvider.notifier);
-                      await editTodoController
-                          .editTodo(todoId: todoId, title: title, isDone: false)
-                          .then((_) => context.pop());
+                      await editTodoController.editTodo(
+                          todoId: todoId, title: title, isDone: false);
+                      context.pop();
                     },
                   ),
                 ],

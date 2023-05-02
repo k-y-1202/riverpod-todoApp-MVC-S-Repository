@@ -35,16 +35,14 @@ class UserRepo extends _$UserRepo {
       await _db.doc(user.userId).update(user.toJson());
 
   // read
-  Future<User?> getUser({required String userId}) async =>
-      await _db.doc(userId).get().then((doc) => doc.data());
+  Future<User?> getUser({required String userId}) async {
+    final query = await _db.doc(userId).get();
+    return query.data();
+  }
 
   // search
-  Future<bool> searchUserById({required String userId}) async =>
-      await _db.where(Keys.userId, isEqualTo: userId).get().then((doc) {
-        if (doc.docs.isNotEmpty) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+  Future<bool> searchUserById({required String userId}) async {
+    final query = await _db.where(Keys.userId, isEqualTo: userId).get();
+    return query.docs.isNotEmpty;
+  }
 }

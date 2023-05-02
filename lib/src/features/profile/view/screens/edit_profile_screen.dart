@@ -79,14 +79,13 @@ class EditProfileScreen extends HookConsumerWidget {
             PrimaryButton(
               width: double.infinity,
               text: '確定する',
-              onPressed: () {
-                controller
-                    .updateUser(
-                      userId: user.value!.userId,
-                      userName: nameController.text,
-                      uint8list: state.uint8List,
-                    )
-                    .then((value) => context.go(AppPage.profile.toPath));
+              onPressed: () async {
+                await controller.updateUser(
+                  userId: user.value!.userId,
+                  userName: nameController.text,
+                  uint8list: state.uint8List,
+                );
+                context.go(AppPage.profile.toPath);
               },
             ),
           ],

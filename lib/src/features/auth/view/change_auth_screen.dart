@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/common_widgets/dialog/firebase_error.dart';
@@ -87,13 +88,13 @@ class ChangeAuthScreen extends ConsumerWidget {
       BuildContext context, WidgetRef ref, bool isEmail) async {
     final controller = ref.read(changeAuthControllerProvider.notifier);
     try {
-      isEmail
-          ? await controller.changeEmail().then(
-                (value) => context.go(AppPage.teamTodoList.toPath),
-              )
-          : await controller.changePass().then(
-                (value) => context.go(AppPage.teamTodoList.toPath),
-              );
+      if (isEmail) {
+        await controller.changeEmail();
+        context.go(AppPage.teamTodoList.toPath);
+      } else {
+        await controller.changePass();
+        context.go(AppPage.teamTodoList.toPath);
+      }
     } on FirebaseAuthException catch (e) {
       EM.firebaseAuth(context, e.code);
     } catch (e) {

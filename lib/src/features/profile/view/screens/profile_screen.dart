@@ -49,9 +49,8 @@ class ProfileScreen extends HookConsumerWidget {
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {
-                  ref.read(firebaseAuthProvider).signOut().then((_) {
-                    context.go(AppPage.login.toPath);
-                  });
+                  ref.read(firebaseAuthProvider).signOut();
+                  context.go(AppPage.login.toPath);
                 },
                 child: const Text('ログアウト'),
               ),
