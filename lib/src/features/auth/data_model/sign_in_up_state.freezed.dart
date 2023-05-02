@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sign_in_up.dart';
+part of 'sign_in_up_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SignInUp {
+mixin _$SignInUpState {
   bool get isLoading => throw _privateConstructorUsedError;
   TextEditingController get emailController =>
       throw _privateConstructorUsedError;
@@ -23,14 +23,15 @@ mixin _$SignInUp {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SignInUpCopyWith<SignInUp> get copyWith =>
+  $SignInUpStateCopyWith<SignInUpState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SignInUpCopyWith<$Res> {
-  factory $SignInUpCopyWith(SignInUp value, $Res Function(SignInUp) then) =
-      _$SignInUpCopyWithImpl<$Res, SignInUp>;
+abstract class $SignInUpStateCopyWith<$Res> {
+  factory $SignInUpStateCopyWith(
+          SignInUpState value, $Res Function(SignInUpState) then) =
+      _$SignInUpStateCopyWithImpl<$Res, SignInUpState>;
   @useResult
   $Res call(
       {bool isLoading,
@@ -39,9 +40,9 @@ abstract class $SignInUpCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SignInUpCopyWithImpl<$Res, $Val extends SignInUp>
-    implements $SignInUpCopyWith<$Res> {
-  _$SignInUpCopyWithImpl(this._value, this._then);
+class _$SignInUpStateCopyWithImpl<$Res, $Val extends SignInUpState>
+    implements $SignInUpStateCopyWith<$Res> {
+  _$SignInUpStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -73,10 +74,11 @@ class _$SignInUpCopyWithImpl<$Res, $Val extends SignInUp>
 }
 
 /// @nodoc
-abstract class _$$_SignInUpCopyWith<$Res> implements $SignInUpCopyWith<$Res> {
-  factory _$$_SignInUpCopyWith(
-          _$_SignInUp value, $Res Function(_$_SignInUp) then) =
-      __$$_SignInUpCopyWithImpl<$Res>;
+abstract class _$$_SignInUpStateCopyWith<$Res>
+    implements $SignInUpStateCopyWith<$Res> {
+  factory _$$_SignInUpStateCopyWith(
+          _$_SignInUpState value, $Res Function(_$_SignInUpState) then) =
+      __$$_SignInUpStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +88,11 @@ abstract class _$$_SignInUpCopyWith<$Res> implements $SignInUpCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SignInUpCopyWithImpl<$Res>
-    extends _$SignInUpCopyWithImpl<$Res, _$_SignInUp>
-    implements _$$_SignInUpCopyWith<$Res> {
-  __$$_SignInUpCopyWithImpl(
-      _$_SignInUp _value, $Res Function(_$_SignInUp) _then)
+class __$$_SignInUpStateCopyWithImpl<$Res>
+    extends _$SignInUpStateCopyWithImpl<$Res, _$_SignInUpState>
+    implements _$$_SignInUpStateCopyWith<$Res> {
+  __$$_SignInUpStateCopyWithImpl(
+      _$_SignInUpState _value, $Res Function(_$_SignInUpState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +102,7 @@ class __$$_SignInUpCopyWithImpl<$Res>
     Object? emailController = null,
     Object? passController = null,
   }) {
-    return _then(_$_SignInUp(
+    return _then(_$_SignInUpState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -119,8 +121,8 @@ class __$$_SignInUpCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SignInUp implements _SignInUp {
-  const _$_SignInUp(
+class _$_SignInUpState implements _SignInUpState {
+  const _$_SignInUpState(
       {this.isLoading = false,
       required this.emailController,
       required this.passController});
@@ -135,14 +137,14 @@ class _$_SignInUp implements _SignInUp {
 
   @override
   String toString() {
-    return 'SignInUp(isLoading: $isLoading, emailController: $emailController, passController: $passController)';
+    return 'SignInUpState(isLoading: $isLoading, emailController: $emailController, passController: $passController)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignInUp &&
+            other is _$_SignInUpState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.emailController, emailController) ||
@@ -158,15 +160,15 @@ class _$_SignInUp implements _SignInUp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignInUpCopyWith<_$_SignInUp> get copyWith =>
-      __$$_SignInUpCopyWithImpl<_$_SignInUp>(this, _$identity);
+  _$$_SignInUpStateCopyWith<_$_SignInUpState> get copyWith =>
+      __$$_SignInUpStateCopyWithImpl<_$_SignInUpState>(this, _$identity);
 }
 
-abstract class _SignInUp implements SignInUp {
-  const factory _SignInUp(
+abstract class _SignInUpState implements SignInUpState {
+  const factory _SignInUpState(
       {final bool isLoading,
       required final TextEditingController emailController,
-      required final TextEditingController passController}) = _$_SignInUp;
+      required final TextEditingController passController}) = _$_SignInUpState;
 
   @override
   bool get isLoading;
@@ -176,6 +178,6 @@ abstract class _SignInUp implements SignInUp {
   TextEditingController get passController;
   @override
   @JsonKey(ignore: true)
-  _$$_SignInUpCopyWith<_$_SignInUp> get copyWith =>
+  _$$_SignInUpStateCopyWith<_$_SignInUpState> get copyWith =>
       throw _privateConstructorUsedError;
 }
