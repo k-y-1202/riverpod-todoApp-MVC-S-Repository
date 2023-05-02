@@ -75,4 +75,8 @@ class SignInUpService {
   Future<void> changePass(String pass) async {
     await _auth.currentUser?.updatePassword(pass);
   }
+
+  Future<void> resetPass(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
+  }
 }

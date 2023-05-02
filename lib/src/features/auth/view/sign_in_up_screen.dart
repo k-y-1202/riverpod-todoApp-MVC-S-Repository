@@ -52,26 +52,43 @@ class SignInUpScreen extends ConsumerWidget {
                         await _signInUp(context, ref, isRegister),
                   ),
                   PaddingStyle.v16,
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: RichText(
-                      text: TextSpan(
-                        style: const TextStyle(color: ColorName.black),
-                        children: [
-                          TextSpan(text: isRegister ? "ログインは" : "新規アカウント作成は"),
-                          TextSpan(
-                            text: "こちら",
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => context.go(
-                                    isRegister
-                                        ? AppPage.login.toPath
-                                        : AppPage.register.toPath,
-                                  ),
-                          )
-                        ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: const TextStyle(color: ColorName.black),
+                          children: [
+                            const TextSpan(text: "パスワードを忘れた方は"),
+                            TextSpan(
+                              text: "こちら",
+                              style: const TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap =
+                                    () => context.go(AppPage.resetPass.toPath),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
+                      RichText(
+                        text: TextSpan(
+                          style: const TextStyle(color: ColorName.black),
+                          children: [
+                            TextSpan(text: isRegister ? "ログインは" : "新規アカウント作成は"),
+                            TextSpan(
+                              text: "こちら",
+                              style: const TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => context.go(
+                                      isRegister
+                                          ? AppPage.login.toPath
+                                          : AppPage.register.toPath,
+                                    ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

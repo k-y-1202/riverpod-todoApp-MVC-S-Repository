@@ -26,7 +26,8 @@ GoRouter goRouter(GoRouterRef ref) {
     redirect: (context, state) {
       final isLoggedIn = firebaseAuth.currentUser != null;
       final isLoginOrRegister = state.subloc.startsWith(AppPage.login.toPath) ||
-          state.subloc.startsWith(AppPage.register.toPath);
+          state.subloc.startsWith(AppPage.register.toPath) ||
+          state.subloc.startsWith(AppPage.resetPass.toPath);
       if (isLoggedIn) {
         if (isLoginOrRegister) {
           return AppPage.teamTodoList.toPath;
