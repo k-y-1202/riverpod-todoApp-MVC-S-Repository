@@ -11,8 +11,8 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/controller/profile_controller.dart';
 
-class ProfileDetailsScreen extends HookConsumerWidget {
-  const ProfileDetailsScreen({super.key});
+class ProfileScreen extends HookConsumerWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
