@@ -16,20 +16,18 @@ class EditProfileScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profileEditController =
-        ref.read(profileEditControllerProvider.notifier);
+    final controller = ref.read(profileEditControllerProvider.notifier);
+    final state = ref.watch(profileEditControllerProvider);
     final deviceWidth = MediaQuery.of(context).size.width;
     final nameController = useTextEditingController();
     final user = useState<User?>(null);
 
     // ユーザー情報を取得する関数
     void getUser() async {
-      final result = await profileEditController.getUser();
+      final result = await controller.getUser();
       user.value = result;
       nameController.text = result!.userName;
     }
-
-    final state = ref.watch(profileEditControllerProvider);
 
     // 初回build時に発火するHooksの関数
     useEffect(() {
@@ -84,7 +82,7 @@ class EditProfileScreen extends HookConsumerWidget {
               width: double.infinity,
               text: '確定する',
               onPressed: () {
-                profileEditController
+                controller
                     .updateUser(
                       userId: user.value!.userId,
                       userName: nameController.text,

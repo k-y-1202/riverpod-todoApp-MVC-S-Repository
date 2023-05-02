@@ -7,11 +7,9 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_util
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/user_service.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/controller/edit_todo_controller.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/service/todo_service.dart';
 
 class TodoTile extends HookConsumerWidget {
   const TodoTile({
@@ -28,11 +26,9 @@ class TodoTile extends HookConsumerWidget {
     final user = useState<User?>(null); // HooksのStateを使ってユーザー情報を管理
     bool isMe = currentUserId == todo.userId;
 
-    void getUser() async {
-      // TODO:
-      // final result = await ref.read(authServiceProvider).getUser();
-      // user.value = result;
-    }
+    void getUser() async => user.value = await ref
+        .read(userServiceProvider.notifier)
+        .getUser(userId: todo.userId);
 
     // 初回build時に発火するHooksの関数
     useEffect(() {
@@ -91,8 +87,8 @@ class TodoTile extends HookConsumerWidget {
   }
 
   _changeToDone({required BuildContext context, required WidgetRef ref}) async {
-    final editTodoController = ref.read(editTodoControllerProvider.notifier);
-    await editTodoController
+    final controller = ref.read(editTodoControllerProvider.notifier);
+    await controller
         .editTodo(
       todoId: todo.todoId,
       title: todo.title,

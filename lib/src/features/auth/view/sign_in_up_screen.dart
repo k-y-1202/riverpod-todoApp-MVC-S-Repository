@@ -20,14 +20,14 @@ class SignInUpScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var signInUpController = ref.watch(signInUpControllerProvider);
+    var state = ref.watch(signInUpControllerProvider);
     final deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(isRegister ? "新規登録" : "ログイン"),
       ),
-      body: signInUpController.isLoading
+      body: state.isLoading
           ? const Center(
               child: CircularProgressIndicator(),
             )
@@ -38,12 +38,12 @@ class SignInUpScreen extends ConsumerWidget {
                 children: [
                   PrimaryTextField(
                     title: "メールアドレス",
-                    controller: signInUpController.emailController,
+                    controller: state.emailController,
                   ),
                   PaddingStyle.v8,
                   PrimaryTextField(
                     title: "パスワード",
-                    controller: signInUpController.passController,
+                    controller: state.passController,
                   ),
                   PaddingStyle.v16,
                   PrimaryButton(
