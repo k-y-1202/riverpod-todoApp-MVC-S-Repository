@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/sign_in_up_service.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 
 part 'reset_pass_controller.g.dart';
 
@@ -15,7 +15,7 @@ class ResetPassController extends _$ResetPassController {
   Future<void> resetPass(String email) async {
     state = true;
 
-    await ref.read(signInUpServiceProvider).resetPass(email);
+    await ref.read(authServiceProvider).resetPass(email);
 
     state = false;
   }

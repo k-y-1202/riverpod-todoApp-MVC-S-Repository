@@ -35,17 +35,6 @@ class UserRepository {
   Future<void> updateUser({required User user}) async =>
       await _db.doc(user.userId).update(user.toJson());
 
-  // uint8Listをstorageに保存
-  Future<void> updateUserIcon({
-    required String userId,
-    required Uint8List uint8list,
-  }) async {
-    await ref
-        .read(firebaseStorageProvider)
-        .ref('userIcon/$userId')
-        .putData(uint8list);
-  }
-
   // read
   Future<User?> getUser({required String userId}) async =>
       await _db.doc(userId).get().then((doc) => doc.data());

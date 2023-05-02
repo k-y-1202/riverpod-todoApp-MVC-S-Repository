@@ -7,7 +7,7 @@ part of 'change_auth_controller.dart';
 // **************************************************************************
 
 String _$changeAuthControllerHash() =>
-    r'48009641fd08fb8a301c8bfcda2424e928e35108';
+    r'cb7187954ce7b68ec975531913f9872cc8ff9fb3';
 
 /// See also [ChangeAuthController].
 @ProviderFor(ChangeAuthController)

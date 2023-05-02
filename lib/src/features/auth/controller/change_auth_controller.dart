@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/change_auth_state.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/sign_in_up_service.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 
 part 'change_auth_controller.g.dart';
 
@@ -25,7 +25,7 @@ class ChangeAuthController extends _$ChangeAuthController {
     if (email == '') return;
     state.emailController.clear();
 
-    await ref.read(signInUpServiceProvider).changeEmail(email);
+    await ref.read(authServiceProvider).changeEmail(email);
 
     state = state.copyWith(isLoading: false);
   }
@@ -36,7 +36,7 @@ class ChangeAuthController extends _$ChangeAuthController {
     final String pass = state.passController.text;
     state.passController.clear();
 
-    await ref.read(signInUpServiceProvider).changePass(pass);
+    await ref.read(authServiceProvider).changePass(pass);
 
     state = state.copyWith(isLoading: false);
   }

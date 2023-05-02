@@ -8,8 +8,10 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/styles.dart'
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/controller/edit_todo_controller.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/service/todo_service.dart';
 
 class TodoTile extends HookConsumerWidget {
   const TodoTile({
@@ -27,9 +29,9 @@ class TodoTile extends HookConsumerWidget {
     bool isMe = currentUserId == todo.userId;
 
     void getUser() async {
-      final userRepo = ref.read(userRepoProvider);
-      final result = await userRepo.getUser(userId: todo.userId);
-      user.value = result;
+      // TODO:
+      // final result = await ref.read(authServiceProvider).getUser();
+      // user.value = result;
     }
 
     // 初回build時に発火するHooksの関数

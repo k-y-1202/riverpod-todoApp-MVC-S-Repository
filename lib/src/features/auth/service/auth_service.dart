@@ -6,15 +6,15 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/config/utils/urls.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/repository/user_repository.dart';
 
-part 'sign_in_up_service.g.dart';
+part 'auth_service.g.dart';
 
 @riverpod
-SignInUpService signInUpService(SignInUpServiceRef ref) {
-  return SignInUpService(ref: ref);
+AuthService authService(AuthServiceRef ref) {
+  return AuthService(ref: ref);
 }
 
-class SignInUpService {
-  SignInUpService({required this.ref})
+class AuthService {
+  AuthService({required this.ref})
       : _auth = ref.read(firebaseAuthProvider),
         _userRepo = ref.read(userRepoProvider);
 
@@ -58,6 +58,7 @@ class SignInUpService {
     );
   }
 
+  // メールアドレス変更
   Future<void> changeEmail(String email) async {
     // ユーザー情報を取得
     final firebaseUser = _auth.currentUser;
@@ -72,10 +73,12 @@ class SignInUpService {
     ref.read(userRepoProvider).updateUser(user: user);
   }
 
+  // パスワード変更
   Future<void> changePass(String pass) async {
     await _auth.currentUser?.updatePassword(pass);
   }
 
+  // パスワードリセット
   Future<void> resetPass(String email) async {
     await _auth.sendPasswordResetEmail(email: email);
   }

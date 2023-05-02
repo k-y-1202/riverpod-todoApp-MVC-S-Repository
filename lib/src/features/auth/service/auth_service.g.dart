@@ -1,24 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_service.dart';
+part of 'auth_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileServiceHash() => r'c5a13bb0c554ff13ddbb711a914e5a15fe4041e0';
+String _$authServiceHash() => r'ef94aa6d0df362ec312f2f00a55dd991a778f754';
 
-/// See also [profileService].
-@ProviderFor(profileService)
-final profileServiceProvider = AutoDisposeProvider<ProfileService>.internal(
-  profileService,
-  name: r'profileServiceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileServiceHash,
+/// See also [authService].
+@ProviderFor(authService)
+final authServiceProvider = AutoDisposeProvider<AuthService>.internal(
+  authService,
+  name: r'authServiceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$authServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef ProfileServiceRef = AutoDisposeProviderRef<ProfileService>;
+typedef AuthServiceRef = AutoDisposeProviderRef<AuthService>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

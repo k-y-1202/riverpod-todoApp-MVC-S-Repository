@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/sign_in_up_state.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/sign_in_up_service.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/auth_service.dart';
 
 part 'sign_in_up_controller.g.dart';
 
@@ -27,7 +27,7 @@ class SignInUpController extends _$SignInUpController {
     state.emailController.clear();
     state.passController.clear();
 
-    await ref.read(signInUpServiceProvider).signInUp(
+    await ref.read(authServiceProvider).signInUp(
           isRegister: isRegister,
           email: email,
           pass: pass,
