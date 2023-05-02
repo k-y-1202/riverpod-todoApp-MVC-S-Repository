@@ -88,7 +88,7 @@ class ProfileEditScreen extends HookConsumerWidget {
                     .updateUser(
                       userId: user.value!.userId,
                       userName: nameController.text,
-                      uint8list: state.value!.uint8List!,
+                      uint8list: state.value?.uint8List,
                     )
                     .then((value) => context.go(AppPage.profile.toPath));
               },

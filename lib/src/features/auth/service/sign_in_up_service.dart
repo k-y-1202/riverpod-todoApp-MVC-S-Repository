@@ -57,4 +57,22 @@ class SignInUpService {
       createdAt: DateTime.now().toIso8601String(),
     );
   }
+
+  Future<void> changeEmail(String email) async {
+    // ユーザー情報を取得
+    final firebaseUser = _auth.currentUser;
+    User? user =
+        await ref.read(userRepoProvider).getUser(userId: firebaseUser!.uid);
+    if (user == null) return;
+
+    await _auth.currentUser?.updateEmail(email);
+
+    // ユーザー情報を更新
+    user = user.copyWith(email: email);
+    ref.read(userRepoProvider).updateUser(user: user);
+  }
+
+  Future<void> changePass(String pass) async {
+    await _auth.currentUser?.updatePassword(pass);
+  }
 }

@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/go_router_refresh_stream.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/routing/route_utils.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/change_auth_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/reset_pass_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/sign_in_up_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_screen.dart';
@@ -54,6 +56,27 @@ GoRouter goRouter(GoRouterRef ref) {
         path: AppPage.register.toPath,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: SignInUpScreen(isRegister: true),
+        ),
+      ),
+      // パスワードリセット画面
+      GoRoute(
+        path: AppPage.resetPass.toPath,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: ResetPassScreen(),
+        ),
+      ),
+      // メールアドレス変更画面
+      GoRoute(
+        path: AppPage.changeEmail.toPath,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: ChangeAuthScreen(isEmail: true),
+        ),
+      ),
+      // パスワード変更画面
+      GoRoute(
+        path: AppPage.changePass.toPath,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: ChangeAuthScreen(isEmail: false),
         ),
       ),
       ShellRoute(

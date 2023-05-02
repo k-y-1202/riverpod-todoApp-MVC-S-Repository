@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/sign_in_up.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/sign_in_up_state.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/sign_in_up_service.dart';
 
 part 'sign_in_up_controller.g.dart';
@@ -10,8 +10,8 @@ class SignInUpController extends _$SignInUpController {
   SignInUpController() : super();
 
   @override
-  SignInUp build() {
-    return SignInUp(
+  SignInUpState build() {
+    return SignInUpState(
       isLoading: false,
       emailController: TextEditingController(),
       passController: TextEditingController(),

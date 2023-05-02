@@ -2,6 +2,9 @@
 enum AppPage {
   login,
   register,
+  resetPass,
+  changeEmail,
+  changePass,
   teamTodoList,
   myTodoList,
   addTodo,
@@ -17,6 +20,12 @@ extension AppPageExtension on AppPage {
         return '/login';
       case AppPage.register:
         return '/register';
+      case AppPage.resetPass:
+        return '/reset-pass';
+      case AppPage.changeEmail:
+        return '/change-email';
+      case AppPage.changePass:
+        return '/change-pass';
       case AppPage.teamTodoList:
         return '/Team-todo-list';
       case AppPage.myTodoList:
