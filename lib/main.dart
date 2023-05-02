@@ -37,7 +37,7 @@ class MyApp extends ConsumerWidget {
 }
 
 
-// riverpod_generatorの使い方<作成編>
+// riverpodの使い方<作成編>
 // 1. riverpod_annotationをimport
 // 2. part 'ファイル名.g.dart';を書く
 /* 4. providerを作成
@@ -73,7 +73,7 @@ FirebaseFirestore firestore(FirestoreRef ref) {
 // 5. flutter pub run build_runner build --delete-conflicting-outputsを実行
 
 
-// riverpod_generatorの使い方<使用編>
+// riverpodの使い方<呼び出し編>
 // 1. ref.watch(Provider名)でProviderを呼び出す。stateにアクセスできる。
 // Provider名は作成したクラスの先頭を小文字＆Providerをつけた名前になる。
 // 例：class HogeController extends _$HogeController => hogeControllerProvider
