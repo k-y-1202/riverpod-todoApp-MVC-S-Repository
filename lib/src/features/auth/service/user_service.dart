@@ -10,13 +10,11 @@ part 'user_service.g.dart';
 
 @riverpod
 class UserService extends _$UserService {
-  UserService() {
+  @override
+  build() {
     _userRepo = ref.read(userRepoProvider.notifier);
     _firebaseStorage = ref.read(firebaseStorageProvider);
   }
-
-  @override
-  build() {}
 
   late UserRepo _userRepo;
   late FirebaseStorage _firebaseStorage;

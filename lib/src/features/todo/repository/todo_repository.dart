@@ -20,14 +20,12 @@ CollectionReference<Todo> todoFirestore(TodoFirestoreRef ref) {
 
 @riverpod
 class TodoRepo extends _$TodoRepo {
-  TodoRepo() {
-    _db = ref.read(todoFirestoreProvider);
-  }
-
   late CollectionReference<Todo> _db;
 
   @override
-  build() {}
+  build() {
+    _db = ref.read(todoFirestoreProvider);
+  }
 
   // create
   Future<void> addTodo({

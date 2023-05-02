@@ -22,7 +22,7 @@ final userFirestoreProvider =
 );
 
 typedef UserFirestoreRef = AutoDisposeProviderRef<CollectionReference<User>>;
-String _$userRepoHash() => r'ef59bd3751b910f6eb4db0d8e1c9cd215eb9a644';
+String _$userRepoHash() => r'd44065a1745bd8b62d8626ae42c80b67ad15ec33';
 
 /// See also [UserRepo].
 @ProviderFor(UserRepo)

@@ -5,12 +5,10 @@ part 'edit_todo_controller.g.dart';
 
 @riverpod
 class EditTodoController extends _$EditTodoController {
-  EditTodoController() {
+  @override
+  FutureOr<void> build() {
     _todoService = ref.read(todoServiceProvider.notifier);
   }
-
-  @override
-  FutureOr<void> build() {}
 
   late TodoService _todoService;
 

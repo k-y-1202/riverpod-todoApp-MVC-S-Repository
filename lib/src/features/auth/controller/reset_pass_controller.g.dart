@@ -7,7 +7,7 @@ part of 'reset_pass_controller.dart';
 // **************************************************************************
 
 String _$resetPassControllerHash() =>
-    r'11fee10447e07e8ce85055aee5a268110ae06356';
+    r'2bd5863252643fb24c2db88954db9ff6da79c5d6';
 
 /// See also [ResetPassController].
 @ProviderFor(ResetPassController)

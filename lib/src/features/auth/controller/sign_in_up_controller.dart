@@ -7,12 +7,9 @@ part 'sign_in_up_controller.g.dart';
 
 @riverpod
 class SignInUpController extends _$SignInUpController {
-  SignInUpController() {
-    _authService = ref.read(authServiceProvider.notifier);
-  }
-
   @override
   SignInUpState build() {
+    _authService = ref.read(authServiceProvider.notifier);
     return SignInUpState(
       isLoading: false,
       emailController: TextEditingController(),

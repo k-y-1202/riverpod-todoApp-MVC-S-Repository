@@ -19,14 +19,12 @@ CollectionReference<User> userFirestore(UserFirestoreRef ref) {
 
 @riverpod
 class UserRepo extends _$UserRepo {
-  UserRepo() {
-    _db = ref.read(userFirestoreProvider);
-  }
-
   late CollectionReference<User> _db;
 
   @override
-  build() {}
+  build() {
+    _db = ref.read(userFirestoreProvider);
+  }
 
   // create
   Future<void> addUser({required User user}) async =>

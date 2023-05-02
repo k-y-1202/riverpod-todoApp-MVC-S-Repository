@@ -7,11 +7,10 @@ part 'todo_list_controller.g.dart';
 
 @riverpod
 class TodoListController extends _$TodoListController {
-  TodoListController() {
+  @override
+  build() {
     _todoService = ref.read(todoServiceProvider.notifier);
   }
-  @override
-  build() {}
 
   late TodoService _todoService;
 

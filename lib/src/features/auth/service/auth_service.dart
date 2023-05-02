@@ -9,16 +9,14 @@ part 'auth_service.g.dart';
 
 @riverpod
 class AuthService extends _$AuthService {
-  AuthService() {
-    _auth = ref.read(firebaseAuthProvider);
-    _userRepo = ref.read(userRepoProvider.notifier);
-  }
-
   late auth.FirebaseAuth _auth;
   late UserRepo _userRepo;
 
   @override
-  build() {}
+  build() {
+    _auth = ref.read(firebaseAuthProvider);
+    _userRepo = ref.read(userRepoProvider.notifier);
+  }
 
   // ログイン・新規登録
   Future<void> signInUp({

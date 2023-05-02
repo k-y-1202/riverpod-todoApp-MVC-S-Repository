@@ -5,12 +5,9 @@ part 'reset_pass_controller.g.dart';
 
 @riverpod
 class ResetPassController extends _$ResetPassController {
-  ResetPassController() {
-    _authService = ref.read(authServiceProvider.notifier);
-  }
-
   @override
   bool build() {
+    _authService = ref.read(authServiceProvider.notifier);
     return false;
   }
 

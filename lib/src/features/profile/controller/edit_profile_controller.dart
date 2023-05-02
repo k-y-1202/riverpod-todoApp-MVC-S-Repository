@@ -10,13 +10,14 @@ part 'edit_profile_controller.g.dart';
 
 @riverpod
 class ProfileEditController extends _$ProfileEditController {
-  ProfileEditController() : super();
   Uint8List? uint8List;
   late UserService _userService;
   late auth.FirebaseAuth _auth;
 
   @override
   Future<EditProfileState> build() async {
+    _userService = ref.read(userServiceProvider.notifier);
+    _auth = ref.read(firebaseAuthProvider);
     return EditProfileState(
       uint8List: uint8List,
       user: await getUser(),

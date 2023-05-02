@@ -7,12 +7,9 @@ part 'change_auth_controller.g.dart';
 
 @riverpod
 class ChangeAuthController extends _$ChangeAuthController {
-  ChangeAuthController() {
-    _authService = ref.read(authServiceProvider.notifier);
-  }
-
   @override
   ChangeAuthState build() {
+    _authService = ref.read(authServiceProvider.notifier);
     return ChangeAuthState(
       isLoading: false,
       emailController: TextEditingController(),

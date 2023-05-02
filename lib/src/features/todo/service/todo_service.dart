@@ -6,14 +6,12 @@ part 'todo_service.g.dart';
 
 @riverpod
 class TodoService extends _$TodoService {
-  TodoService() {
-    _todoRepo = ref.read(todoRepoProvider.notifier);
-  }
-
   late TodoRepo _todoRepo;
 
   @override
-  build() {}
+  build() {
+    _todoRepo = ref.read(todoRepoProvider.notifier);
+  }
 
   Future<void> addTodo({
     required String title,
