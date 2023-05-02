@@ -31,17 +31,20 @@ class ProfileEditController extends _$ProfileEditController {
     required Uint8List? uint8list,
   }) async {
     String? userIcon;
+    User? user = await ref.read(userRepoProvider).getUser(userId: userId);
+    if (user == null) return;
+
+    user = user.copyWith(userName: userName);
+
     if (uint8List != null) {
       userIcon = await ref.read(profileServiceProvider).updateUserIcon(
             userId: userId,
             uint8List: uint8List!,
           );
+      user = user.copyWith(userIcon: userIcon);
     }
-    await ref.read(userRepoProvider).updateUser(
-          userId: userId,
-          userName: userName,
-          userIcon: userIcon,
-        );
+
+    await ref.read(userRepoProvider).updateUser(user: user);
   }
 
   Future<void> pickImage() async {

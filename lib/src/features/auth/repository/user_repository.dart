@@ -32,19 +32,8 @@ class UserRepository {
       await _db.doc(user.userId).set(user);
 
   // update
-  Future<void> updateUser({
-    required String userId,
-    required String userName,
-    required String? userIcon,
-  }) async {
-    if (userIcon != null) {
-      await _db
-          .doc(userId)
-          .update({'userName': userName, 'userIcon': userIcon});
-    } else {
-      await _db.doc(userId).update({'userName': userName});
-    }
-  }
+  Future<void> updateUser({required User user}) async =>
+      await _db.doc(user.userId).update(user.toJson());
 
   // uint8Listをstorageに保存
   Future<void> updateUserIcon({
