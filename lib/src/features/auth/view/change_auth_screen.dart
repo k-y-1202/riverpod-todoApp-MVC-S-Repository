@@ -24,58 +24,61 @@ class ChangeAuthScreen extends ConsumerWidget {
 
     return Scaffold(
       body: Center(
-        child: Container(
-          width: 600,
-          padding: const EdgeInsets.all(18),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                isEmail ? "メールアドレス変更" : "パスワード変更",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                ),
-              ),
-              PaddingStyle.v16,
-              isEmail
-                  ? PrimaryTextField(
-                      title: "メールアドレス",
-                      controller: state.emailController,
-                    )
-                  : PrimaryTextField(
-                      title: "パスワード",
-                      controller: state.passController,
+        child: state.isLoading
+            ? const CircularProgressIndicator()
+            : Container(
+                width: 600,
+                padding: const EdgeInsets.all(18),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      isEmail ? "メールアドレス変更" : "パスワード変更",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
                     ),
-              PaddingStyle.v32,
-              PrimaryButton(
-                text: isEmail ? 'メールアドレスを変更する' : 'パスワードを変更する',
-                height: 40,
-                width: 420,
-                onPressed: () async => await _resetAuth(context, ref, isEmail),
-              ),
-              PaddingStyle.v32,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  RichText(
-                    text: TextSpan(
+                    PaddingStyle.v16,
+                    isEmail
+                        ? PrimaryTextField(
+                            title: "メールアドレス",
+                            controller: state.emailController,
+                          )
+                        : PrimaryTextField(
+                            title: "パスワード",
+                            controller: state.passController,
+                          ),
+                    PaddingStyle.v32,
+                    PrimaryButton(
+                      text: isEmail ? 'メールアドレスを変更する' : 'パスワードを変更する',
+                      height: 40,
+                      width: 420,
+                      onPressed: () async =>
+                          await _resetAuth(context, ref, isEmail),
+                    ),
+                    PaddingStyle.v32,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextSpan(
-                          text: '戻る',
-                          style: const TextStyle(color: Colors.blue),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () => context.go(AppPage.editProfile.toPath),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '戻る',
+                                style: const TextStyle(color: Colors.blue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () =>
+                                      context.go(AppPage.editProfile.toPath),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }
