@@ -21,7 +21,10 @@ class ProfileService {
         .read(firebaseStorageProvider)
         .ref('userIcon/$userId')
         .putData(uint8List, SettableMetadata(contentType: 'image/png'))
-        .then((value) => (value.ref.getDownloadURL()));
+        .then((value) {
+      print(value.ref.getDownloadURL());
+      return (value.ref.getDownloadURL());
+    });
   }
 
   Future<Uint8List?> pickImage() async {
