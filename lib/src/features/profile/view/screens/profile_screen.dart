@@ -73,19 +73,19 @@ class ProfileScreen extends HookConsumerWidget {
             PrimaryButton(
               width: double.infinity,
               text: 'プロフィール編集',
-              onPressed: () => context.go(AppPage.editProfile.toPath),
+              onPressed: () => context.push(AppPage.editProfile.toPath),
             ),
             PaddingStyle.v32,
             PrimaryButton(
               width: double.infinity,
               text: 'メルアド変更',
-              onPressed: () => context.go(AppPage.changeEmail.toPath),
+              onPressed: () => context.push(AppPage.changeEmail.toPath),
             ),
             PaddingStyle.v16,
             PrimaryButton(
               width: double.infinity,
               text: 'パスワード変更',
-              onPressed: () => context.go(AppPage.changePass.toPath),
+              onPressed: () => context.push(AppPage.changePass.toPath),
             ),
             const Spacer(),
           ],
