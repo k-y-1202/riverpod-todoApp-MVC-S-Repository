@@ -8,7 +8,7 @@ import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/reset_
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/view/sign_in_up_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/navigation/view/bottom_navigation.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_screen.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/profile_edit_screen.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/view/screens/edit_profile_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/add_todo_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/edit_todo_screen.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/view/screens/my_todo_list_screen.dart';
@@ -132,7 +132,7 @@ GoRouter goRouter(GoRouterRef ref) {
           GoRoute(
             path: AppPage.editProfile.toPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: ProfileEditScreen(),
+              child: EditProfileScreen(),
             ),
           ),
         ],

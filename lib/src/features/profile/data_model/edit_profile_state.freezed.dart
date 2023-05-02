@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'profile_edit_state.dart';
+part of 'edit_profile_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,20 +15,20 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProfileEditState {
+mixin _$EditProfileState {
   Uint8List? get uint8List => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ProfileEditStateCopyWith<ProfileEditState> get copyWith =>
+  $EditProfileStateCopyWith<EditProfileState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProfileEditStateCopyWith<$Res> {
-  factory $ProfileEditStateCopyWith(
-          ProfileEditState value, $Res Function(ProfileEditState) then) =
-      _$ProfileEditStateCopyWithImpl<$Res, ProfileEditState>;
+abstract class $EditProfileStateCopyWith<$Res> {
+  factory $EditProfileStateCopyWith(
+          EditProfileState value, $Res Function(EditProfileState) then) =
+      _$EditProfileStateCopyWithImpl<$Res, EditProfileState>;
   @useResult
   $Res call({Uint8List? uint8List, User? user});
 
@@ -36,9 +36,9 @@ abstract class $ProfileEditStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
-    implements $ProfileEditStateCopyWith<$Res> {
-  _$ProfileEditStateCopyWithImpl(this._value, this._then);
+class _$EditProfileStateCopyWithImpl<$Res, $Val extends EditProfileState>
+    implements $EditProfileStateCopyWith<$Res> {
+  _$EditProfileStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -77,11 +77,11 @@ class _$ProfileEditStateCopyWithImpl<$Res, $Val extends ProfileEditState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileEditStateCopyWith<$Res>
-    implements $ProfileEditStateCopyWith<$Res> {
-  factory _$$_ProfileEditStateCopyWith(
-          _$_ProfileEditState value, $Res Function(_$_ProfileEditState) then) =
-      __$$_ProfileEditStateCopyWithImpl<$Res>;
+abstract class _$$_EditProfileStateCopyWith<$Res>
+    implements $EditProfileStateCopyWith<$Res> {
+  factory _$$_EditProfileStateCopyWith(
+          _$_EditProfileState value, $Res Function(_$_EditProfileState) then) =
+      __$$_EditProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Uint8List? uint8List, User? user});
@@ -91,11 +91,11 @@ abstract class _$$_ProfileEditStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProfileEditStateCopyWithImpl<$Res>
-    extends _$ProfileEditStateCopyWithImpl<$Res, _$_ProfileEditState>
-    implements _$$_ProfileEditStateCopyWith<$Res> {
-  __$$_ProfileEditStateCopyWithImpl(
-      _$_ProfileEditState _value, $Res Function(_$_ProfileEditState) _then)
+class __$$_EditProfileStateCopyWithImpl<$Res>
+    extends _$EditProfileStateCopyWithImpl<$Res, _$_EditProfileState>
+    implements _$$_EditProfileStateCopyWith<$Res> {
+  __$$_EditProfileStateCopyWithImpl(
+      _$_EditProfileState _value, $Res Function(_$_EditProfileState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
     Object? uint8List = freezed,
     Object? user = freezed,
   }) {
-    return _then(_$_ProfileEditState(
+    return _then(_$_EditProfileState(
       uint8List: freezed == uint8List
           ? _value.uint8List
           : uint8List // ignore: cast_nullable_to_non_nullable
@@ -119,8 +119,8 @@ class __$$_ProfileEditStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileEditState implements _ProfileEditState {
-  _$_ProfileEditState({this.uint8List, this.user});
+class _$_EditProfileState implements _EditProfileState {
+  _$_EditProfileState({this.uint8List, this.user});
 
   @override
   final Uint8List? uint8List;
@@ -129,14 +129,14 @@ class _$_ProfileEditState implements _ProfileEditState {
 
   @override
   String toString() {
-    return 'ProfileEditState(uint8List: $uint8List, user: $user)';
+    return 'EditProfileState(uint8List: $uint8List, user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileEditState &&
+            other is _$_EditProfileState &&
             const DeepCollectionEquality().equals(other.uint8List, uint8List) &&
             (identical(other.user, user) || other.user == user));
   }
@@ -148,13 +148,13 @@ class _$_ProfileEditState implements _ProfileEditState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileEditStateCopyWith<_$_ProfileEditState> get copyWith =>
-      __$$_ProfileEditStateCopyWithImpl<_$_ProfileEditState>(this, _$identity);
+  _$$_EditProfileStateCopyWith<_$_EditProfileState> get copyWith =>
+      __$$_EditProfileStateCopyWithImpl<_$_EditProfileState>(this, _$identity);
 }
 
-abstract class _ProfileEditState implements ProfileEditState {
-  factory _ProfileEditState({final Uint8List? uint8List, final User? user}) =
-      _$_ProfileEditState;
+abstract class _EditProfileState implements EditProfileState {
+  factory _EditProfileState({final Uint8List? uint8List, final User? user}) =
+      _$_EditProfileState;
 
   @override
   Uint8List? get uint8List;
@@ -162,6 +162,6 @@ abstract class _ProfileEditState implements ProfileEditState {
   User? get user;
   @override
   @JsonKey(ignore: true)
-  _$$_ProfileEditStateCopyWith<_$_ProfileEditState> get copyWith =>
+  _$$_EditProfileStateCopyWith<_$_EditProfileState> get copyWith =>
       throw _privateConstructorUsedError;
 }

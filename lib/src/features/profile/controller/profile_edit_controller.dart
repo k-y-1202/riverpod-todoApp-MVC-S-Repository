@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/config/providers/firebase_provider.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/data_model/user.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/auth/service/user_service.dart';
-import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/data_model/profile_edit_state.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/profile/data_model/edit_profile_state.dart';
 
 part 'profile_edit_controller.g.dart';
 
@@ -12,8 +12,8 @@ class ProfileEditController extends _$ProfileEditController {
   Uint8List? uint8List;
 
   @override
-  Future<ProfileEditState> build() async {
-    return ProfileEditState(
+  Future<EditProfileState> build() async {
+    return EditProfileState(
       uint8List: uint8List,
       user: await getUser(),
     );
