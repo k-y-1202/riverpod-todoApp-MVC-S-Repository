@@ -22,7 +22,7 @@ final todoFirestoreProvider =
 );
 
 typedef TodoFirestoreRef = AutoDisposeProviderRef<CollectionReference<Todo>>;
-String _$todoRepoHash() => r'2d687c95c0827e4b272e1a70451bf54eafd63efa';
+String _$todoRepoHash() => r'd448e882189b547dbf4e59d7d5aae95c2568065b';
 
 /// See also [TodoRepo].
 @ProviderFor(TodoRepo)

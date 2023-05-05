@@ -46,4 +46,8 @@ class TodoService extends _$TodoService {
 
   Stream<List<Todo>> getTeamTodoList({required String teamId}) =>
       _todoRepo.getTeamTodoList(teamId: teamId);
+
+  Future<Todo?> getTodoById({required String todoId}) async {
+    return await _todoRepo.getTodoById(todoId: todoId);
+  }
 }

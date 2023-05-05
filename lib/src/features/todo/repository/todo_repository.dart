@@ -72,4 +72,10 @@ class TodoRepo extends _$TodoRepo {
       .map(
         (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
       );
+
+  // IdからTodoを取得
+  Future<Todo?> getTodoById({required String todoId}) async {
+    final doc = await _db.doc(todoId).get();
+    return doc.data();
+  }
 }

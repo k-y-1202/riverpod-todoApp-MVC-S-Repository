@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/data_model/todo.dart';
 import 'package:riverpod_todo_app_mvc_s_repository/src/features/todo/service/todo_service.dart';
 
 part 'edit_todo_controller.g.dart';
@@ -25,5 +26,9 @@ class EditTodoController extends _$EditTodoController {
       isDone: isDone,
     );
     state = false;
+  }
+
+  Future<Todo?> getTodoById({required String todoId}) async {
+    return await _todoService.getTodoById(todoId: todoId);
   }
 }

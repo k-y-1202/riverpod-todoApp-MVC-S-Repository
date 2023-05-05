@@ -31,6 +31,18 @@ class EditTodoScreen extends HookConsumerWidget {
       }
     });
 
+    // Todo?を取得する関数
+    void getTodo() async {
+      final editTodoController = ref.read(editTodoControllerProvider.notifier);
+      final todo = await editTodoController.getTodoById(todoId: todoId);
+      titleController.text = todo?.title ?? '';
+    }
+
+    useEffect(() {
+      getTodo();
+      return null;
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('タスク編集画面'),
